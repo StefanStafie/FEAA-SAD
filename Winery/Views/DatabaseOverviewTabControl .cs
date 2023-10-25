@@ -13,7 +13,7 @@ namespace Winery.Views
             InitializeComponent();
         }
 
-        private void DatabaseOverviewTabControl_Load(object sender, EventArgs e)
+        public void Init()
         {
             LoadingForm loadingDialog = new LoadingForm(() =>
             {

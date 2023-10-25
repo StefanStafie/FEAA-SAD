@@ -110,7 +110,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(261, 23);
             this.button2.TabIndex = 33;
-            this.button2.Text = "Generate with new clients";
+            this.button2.Text = "Generate with existing clients";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // label10
@@ -130,6 +130,7 @@
             this.button1.TabIndex = 32;
             this.button1.Text = "Generate with new clients";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.GenerateClientsButton_Click);
             // 
             // birthDateFrom
             // 
@@ -137,6 +138,7 @@
             this.birthDateFrom.Name = "birthDateFrom";
             this.birthDateFrom.Size = new System.Drawing.Size(200, 20);
             this.birthDateFrom.TabIndex = 2;
+            this.birthDateFrom.Value = new System.DateTime(1999, 2, 12, 15, 2, 0, 0);
             // 
             // label37
             // 
@@ -153,6 +155,7 @@
             this.birthDateTo.Name = "birthDateTo";
             this.birthDateTo.Size = new System.Drawing.Size(200, 20);
             this.birthDateTo.TabIndex = 3;
+            this.birthDateTo.Value = new System.DateTime(2000, 2, 12, 15, 2, 0, 0);
             // 
             // generateCount
             // 
@@ -171,7 +174,7 @@
             this.generateCount.Size = new System.Drawing.Size(200, 20);
             this.generateCount.TabIndex = 30;
             this.generateCount.Value = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -219,6 +222,11 @@
             // winePriceFrom
             // 
             this.winePriceFrom.Location = new System.Drawing.Point(143, 112);
+            this.winePriceFrom.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.winePriceFrom.Minimum = new decimal(new int[] {
             1,
             0,
@@ -246,7 +254,7 @@
             // 
             this.winePriceTo.Location = new System.Drawing.Point(371, 112);
             this.winePriceTo.Maximum = new decimal(new int[] {
-            2301,
+            1000,
             0,
             0,
             0});
@@ -270,6 +278,7 @@
             this.saleDateTo.Name = "saleDateTo";
             this.saleDateTo.Size = new System.Drawing.Size(200, 20);
             this.saleDateTo.TabIndex = 26;
+            this.saleDateTo.Value = new System.DateTime(2021, 1, 1, 15, 2, 0, 0);
             // 
             // label17
             // 
@@ -286,10 +295,16 @@
             this.saleDateFrom.Name = "saleDateFrom";
             this.saleDateFrom.Size = new System.Drawing.Size(200, 20);
             this.saleDateFrom.TabIndex = 25;
+            this.saleDateFrom.Value = new System.DateTime(2020, 1, 1, 15, 2, 0, 0);
             // 
             // totalExpensesFrom
             // 
             this.totalExpensesFrom.Location = new System.Drawing.Point(143, 138);
+            this.totalExpensesFrom.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.totalExpensesFrom.Minimum = new decimal(new int[] {
             1,
             0,
@@ -317,7 +332,7 @@
             // 
             this.totalExpensesTo.Location = new System.Drawing.Point(371, 138);
             this.totalExpensesTo.Maximum = new decimal(new int[] {
-            9999999,
+            10000,
             0,
             0,
             0});
@@ -468,7 +483,7 @@
             this.maxQuantity.Size = new System.Drawing.Size(200, 20);
             this.maxQuantity.TabIndex = 18;
             this.maxQuantity.Value = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});

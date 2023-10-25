@@ -2,12 +2,51 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Winery.GraphsModels;
 
 namespace Winery.Helper
 {
     static public class DatabaseCommandHelper
     {
         const string connectionString = "Data Source=localhost;User Id=NEW_USER;Password=password123;";
+
+        #region Graphs
+
+        static public List<WineryDailySalesModel> GetDailySales(DateTime startDate, DateTime endDate)
+        {
+            var result = new List<WineryDailySalesModel>();
+
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "WITH t1 as (SELECT \"winery\" a, \"SALE_DATE\", SUM(\"price\"*\"quantity\") b FROM SOLD_WINES JOIN NEW_USER.WINES W ON W.\"id\" = SOLD_WINES.\"id_wine\" GROUP BY \"SALE_DATE\", \"winery\") SELECT a, \"SALE_DATE\", b FROM t1 WHERE \"SALE_DATE\" BETWEEN :startDate AND :endDate ORDER BY a, \"SALE_DATE\"";
+
+                using (OracleCommand command = new OracleCommand(query, connection))
+                {
+                    command.Parameters.Add(new OracleParameter("startDate", OracleDbType.Date)).Value = startDate;
+                    command.Parameters.Add(new OracleParameter("endDate", OracleDbType.Date)).Value = endDate;
+
+                    using (OracleDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result.Add(new WineryDailySalesModel(reader.GetString(0), reader.GetDateTime(1), reader.GetInt32(2)));
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+            return result;
+        }
+
+        #endregion
+
+        #region DataGenerator
 
         static public List<int> GetCountryIds()
         {
@@ -141,6 +180,31 @@ namespace Winery.Helper
             return (int)price;
         }
 
+        public static List<string> GetWineryList()
+        {
+            var result = new List<string>();   
+
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT distinct \"winery\" from wines";
+
+                using (OracleCommand command = new OracleCommand(query, connection))
+                {
+                    using (OracleDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
         public static void InsertSaleInfo(int clientId, int wineId, int quantity, DateTime dateOfSale)
         {
             using (OracleConnection connection = new OracleConnection(connectionString))
@@ -148,7 +212,7 @@ namespace Winery.Helper
                 connection.Open();
 
                 string query = "INSERT INTO NEW_USER.SOLD_WINES (\"id\", \"id_wine\", \"id_client\", \"quantity\", \"SALE_DATE\") " +
-                               "VALUES ((SELECT MAX(\"id\") +1 FROM NEW_USER.SOLD_WINES), :wineId, :clientId, :quantity, :dateOfSale)";
+                               "VALUES ((SELECT Coalesce(MAX(\"id\") +1, 0) FROM NEW_USER.SOLD_WINES), :wineId, :clientId, :quantity, :dateOfSale)";
 
                 using (OracleCommand command = new OracleCommand(query, connection))
                 {
@@ -186,5 +250,7 @@ namespace Winery.Helper
 
             return nextClientId;
         }
+
+        #endregion
     }
 }

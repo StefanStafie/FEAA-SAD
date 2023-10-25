@@ -28,7 +28,7 @@ namespace Winery.Views
                 return;
             }
 
-            if (this.birthDateFrom.Value < DateTime.Now.Subtract(TimeSpan.FromDays(legalAge * 365.25)))
+            if (this.birthDateFrom.Value > DateTime.Now.Subtract(TimeSpan.FromDays(legalAge * 365.25)))
             {
                 MessageBox.Show($"Generated clients would be too young to drink. Please set date of birth before {DateTime.Now.Subtract(TimeSpan.FromDays(legalAge * 365.25)).ToShortDateString()}");
                 return;
@@ -52,7 +52,7 @@ namespace Winery.Views
                 return;
             }
 
-            if (this.saleDateFrom.Value > DateTime.Now.Subtract(TimeSpan.FromDays(legalAge * 365.25)))
+            if (this.saleDateFrom.Value < this.birthDateTo.Value.Add(TimeSpan.FromDays(legalAge * 365.25)))
             {
                 MessageBox.Show($"Generated clients would be too young to drink. Please set date of birth before {DateTime.Now.Subtract(TimeSpan.FromDays(legalAge * 365.25)).ToShortDateString()}");
                 return;

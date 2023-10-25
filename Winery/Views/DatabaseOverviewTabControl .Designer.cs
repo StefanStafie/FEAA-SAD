@@ -1218,7 +1218,6 @@
             this.Controls.Add(this.tabControl);
             this.Name = "DatabaseOverviewTabControl";
             this.Size = new System.Drawing.Size(1199, 615);
-            this.Load += new System.EventHandler(this.DatabaseOverviewTabControl_Load);
             this.tabControl.ResumeLayout(false);
             this.WinesPage.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);

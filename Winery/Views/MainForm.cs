@@ -28,6 +28,7 @@ namespace Winery
         {
             this.graphsTabControl.Dock = DockStyle.Fill;
             this.databaseOverviewTabControl.Visible = true;
+            //this.databaseOverviewTabControl.Init(); 
         }
 
         private void ResetMenuItems()

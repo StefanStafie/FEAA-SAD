@@ -1,4 +1,5 @@
-﻿using RandomNameGeneratorLibrary;
+﻿using OxyPlot;
+using RandomNameGeneratorLibrary;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -10,15 +11,26 @@ namespace Winery.Helper
 {
     public static class RandomGenerator
     {
+        static Random random = new Random();
+
         public static string GenerateClientName()
         {
             var personGenerator = new PersonNameGenerator();
             return personGenerator.GenerateRandomFirstAndLastName();
         }
+        
+        public static OxyColor GetRandomColor()
+        {
+
+            byte red = (byte)random.Next(256); // Generate a random value between 0 and 255 for red
+            byte green = (byte)random.Next(256); // Generate a random value between 0 and 255 for green
+            byte blue = (byte)random.Next(256); // Generate a random value between 0 and 255 for blue
+
+            return OxyColor.FromRgb(red, green, blue);
+        }
 
         public static DateTime GenerateRandomDate(DateTime startDate, DateTime endDate)
         {
-            Random random = new Random();
             int range = (endDate - startDate).Days;
             int randomDays = random.Next(range);
             return startDate.AddDays(randomDays);
@@ -26,7 +38,6 @@ namespace Winery.Helper
 
         public static string GenerateRandomGender()
         {
-            Random random = new Random();
             int randomNumber = random.Next(2); // Generates 0 or 1
 
             if (randomNumber == 0)
@@ -47,27 +58,23 @@ namespace Winery.Helper
                 throw new ArgumentException("The list is empty or null.");
             }
 
-            Random random = new Random();
             int randomIndex = random.Next(0, countryIds.Count);
             return countryIds[randomIndex];
         }
 
         public static int GetRandomWineFromList(List<int> wines)
         {
-            Random random = new Random();
             int randomIndex = random.Next(0, wines.Count); 
             return wines[randomIndex];
         }
 
         public static int GenerateRandomNumber(decimal maxQuantity)
         {
-            Random random = new Random();
             return random.Next(1, (int)maxQuantity + 1);
         }
 
         internal static int GenerateRandomNumberBetween(decimal minValue, decimal maxValue)
         {
-            Random random = new Random();
             return random.Next((int)minValue, (int)maxValue + 1); 
         }
     }
