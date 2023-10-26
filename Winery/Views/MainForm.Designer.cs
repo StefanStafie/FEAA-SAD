@@ -32,10 +32,14 @@
             this.ineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.threeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.graphs2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.graphs3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.graphsTabControl3 = new Winery.Views.GraphsTabControl3();
+            this.graphsTabControl2 = new Winery.Views.GraphsTabControl2();
+            this.graphsTabControl = new Winery.Views.GraphsTabControl1();
             this.dataGeneratorPanel = new Winery.Views.DataGeneratorPanell();
             this.databaseOverviewTabControl = new Winery.Views.DatabaseOverviewTabControl();
-            this.graphsTabControl = new Winery.Views.GraphsTabControl();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -51,7 +55,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ineToolStripMenuItem,
             this.twoToolStripMenuItem,
-            this.threeToolStripMenuItem});
+            this.threeToolStripMenuItem,
+            this.graphs2ToolStripMenuItem,
+            this.graphs3ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
@@ -79,9 +85,23 @@
             // 
             this.threeToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.threeToolStripMenuItem.Name = "threeToolStripMenuItem";
-            this.threeToolStripMenuItem.Size = new System.Drawing.Size(56, 39);
-            this.threeToolStripMenuItem.Text = "Graphs";
+            this.threeToolStripMenuItem.Size = new System.Drawing.Size(65, 39);
+            this.threeToolStripMenuItem.Text = "Graphs 1";
             this.threeToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem_Click);
+            // 
+            // graphs2ToolStripMenuItem
+            // 
+            this.graphs2ToolStripMenuItem.Name = "graphs2ToolStripMenuItem";
+            this.graphs2ToolStripMenuItem.Size = new System.Drawing.Size(65, 39);
+            this.graphs2ToolStripMenuItem.Text = "Graphs 2";
+            this.graphs2ToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem_Click);
+            // 
+            // graphs3ToolStripMenuItem
+            // 
+            this.graphs3ToolStripMenuItem.Name = "graphs3ToolStripMenuItem";
+            this.graphs3ToolStripMenuItem.Size = new System.Drawing.Size(65, 39);
+            this.graphs3ToolStripMenuItem.Text = "Graphs 3";
+            this.graphs3ToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem_Click);
             // 
             // splitContainer2
             // 
@@ -102,17 +122,46 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.splitContainer2.Panel2.Controls.Add(this.graphsTabControl3);
+            this.splitContainer2.Panel2.Controls.Add(this.graphsTabControl2);
             this.splitContainer2.Panel2.Controls.Add(this.graphsTabControl);
             this.splitContainer2.Panel2.Controls.Add(this.dataGeneratorPanel);
             this.splitContainer2.Panel2.Controls.Add(this.databaseOverviewTabControl);
-            this.splitContainer2.Size = new System.Drawing.Size(1310, 477);
+            this.splitContainer2.Size = new System.Drawing.Size(1310, 582);
             this.splitContainer2.SplitterDistance = 45;
             this.splitContainer2.SplitterWidth = 2;
             this.splitContainer2.TabIndex = 2;
             // 
+            // graphsTabControl3
+            // 
+            this.graphsTabControl3.LoadedTreeview1 = false;
+            this.graphsTabControl3.Location = new System.Drawing.Point(844, 185);
+            this.graphsTabControl3.Name = "graphsTabControl3";
+            this.graphsTabControl3.Size = new System.Drawing.Size(241, 127);
+            this.graphsTabControl3.TabIndex = 38;
+            this.graphsTabControl3.Visible = false;
+            // 
+            // graphsTabControl2
+            // 
+            this.graphsTabControl2.Location = new System.Drawing.Point(597, 185);
+            this.graphsTabControl2.Name = "graphsTabControl2";
+            this.graphsTabControl2.Size = new System.Drawing.Size(241, 127);
+            this.graphsTabControl2.TabIndex = 37;
+            this.graphsTabControl2.Visible = false;
+            // 
+            // graphsTabControl
+            // 
+            this.graphsTabControl.Location = new System.Drawing.Point(844, 24);
+            this.graphsTabControl.Margin = new System.Windows.Forms.Padding(4);
+            this.graphsTabControl.Name = "graphsTabControl";
+            this.graphsTabControl.Size = new System.Drawing.Size(241, 133);
+            this.graphsTabControl.TabIndex = 36;
+            this.graphsTabControl.Visible = false;
+            // 
             // dataGeneratorPanel
             // 
             this.dataGeneratorPanel.Location = new System.Drawing.Point(3, 3);
+            this.dataGeneratorPanel.Margin = new System.Windows.Forms.Padding(4);
             this.dataGeneratorPanel.Name = "dataGeneratorPanel";
             this.dataGeneratorPanel.Size = new System.Drawing.Size(586, 309);
             this.dataGeneratorPanel.TabIndex = 35;
@@ -120,26 +169,19 @@
             // 
             // databaseOverviewTabControl
             // 
-            this.databaseOverviewTabControl.Location = new System.Drawing.Point(722, 38);
+            this.databaseOverviewTabControl.Location = new System.Drawing.Point(597, 24);
+            this.databaseOverviewTabControl.Margin = new System.Windows.Forms.Padding(4);
             this.databaseOverviewTabControl.Name = "databaseOverviewTabControl";
-            this.databaseOverviewTabControl.Size = new System.Drawing.Size(309, 202);
+            this.databaseOverviewTabControl.Size = new System.Drawing.Size(226, 133);
             this.databaseOverviewTabControl.TabIndex = 34;
             this.databaseOverviewTabControl.Visible = false;
-            // 
-            // graphsTabControl
-            // 
-            this.graphsTabControl.Location = new System.Drawing.Point(655, 254);
-            this.graphsTabControl.Name = "graphsTabControl";
-            this.graphsTabControl.Size = new System.Drawing.Size(1252, 715);
-            this.graphsTabControl.TabIndex = 36;
-            this.graphsTabControl.Visible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(1310, 477);
+            this.ClientSize = new System.Drawing.Size(1310, 582);
             this.Controls.Add(this.splitContainer2);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -167,7 +209,11 @@
         private System.Windows.Forms.ToolStripMenuItem threeToolStripMenuItem;
         private Views.DatabaseOverviewTabControl databaseOverviewTabControl;
         private Views.DataGeneratorPanell dataGeneratorPanel;
-        private Views.GraphsTabControl graphsTabControl;
+        private Views.GraphsTabControl1 graphsTabControl;
+        public System.Windows.Forms.ToolStripMenuItem graphs2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem graphs3ToolStripMenuItem;
+        public Views.GraphsTabControl2 graphsTabControl2;
+        private Views.GraphsTabControl3 graphsTabControl3;
     }
 }
 

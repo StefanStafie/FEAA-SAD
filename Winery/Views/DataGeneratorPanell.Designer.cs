@@ -112,6 +112,7 @@
             this.button2.TabIndex = 33;
             this.button2.Text = "Generate with existing clients";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.GenerateSalesOnlyButton_Click);
             // 
             // label10
             // 
@@ -194,8 +195,8 @@
             this.clientGender.FormattingEnabled = true;
             this.clientGender.Items.AddRange(new object[] {
             "ANY",
-            "Male",
-            "Female"});
+            "male",
+            "female"});
             this.clientGender.Location = new System.Drawing.Point(143, 57);
             this.clientGender.Name = "clientGender";
             this.clientGender.Size = new System.Drawing.Size(428, 21);

@@ -2,10 +2,6 @@
 using RandomNameGeneratorLibrary;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Winery.Helper
 {
@@ -18,10 +14,9 @@ namespace Winery.Helper
             var personGenerator = new PersonNameGenerator();
             return personGenerator.GenerateRandomFirstAndLastName();
         }
-        
+
         public static OxyColor GetRandomColor()
         {
-
             byte red = (byte)random.Next(256); // Generate a random value between 0 and 255 for red
             byte green = (byte)random.Next(256); // Generate a random value between 0 and 255 for green
             byte blue = (byte)random.Next(256); // Generate a random value between 0 and 255 for blue
@@ -64,7 +59,7 @@ namespace Winery.Helper
 
         public static int GetRandomWineFromList(List<int> wines)
         {
-            int randomIndex = random.Next(0, wines.Count); 
+            int randomIndex = random.Next(0, wines.Count);
             return wines[randomIndex];
         }
 
@@ -75,7 +70,12 @@ namespace Winery.Helper
 
         internal static int GenerateRandomNumberBetween(decimal minValue, decimal maxValue)
         {
-            return random.Next((int)minValue, (int)maxValue + 1); 
+            return random.Next((int)minValue, (int)maxValue + 1);
+        }
+
+        internal static int GetRandomClient(List<int> clients)
+        {
+            return clients[random.Next(0, clients.Count - 1)];
         }
     }
 }

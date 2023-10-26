@@ -192,7 +192,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
-    <Compile Include="GraphsModels\WineryDailySalesModel.cs" />
+    <Compile Include="Models\ClientExpensesModel.cs" />
+    <Compile Include="Models\ClientWineSummary.cs" />
+    <Compile Include="Models\SoldWines.cs" />
+    <Compile Include="Models\WineCountry.cs" />
+    <Compile Include="Models\Wine.cs" />
+    <Compile Include="Models\Winery.cs" />
+    <Compile Include="Models\WineryDailySalesModel.cs" />
     <Compile Include="Helper\DatabaseCommandHelper.cs" />
     <Compile Include="Helper\RandomGenerator.cs" />
     <Compile Include="Helper\WinformsHelper.cs" />
@@ -208,11 +214,29 @@
     <Compile Include="Views\DataGeneratorPanell.Designer.cs">
       <DependentUpon>DataGeneratorPanell.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\GraphsTabControl.cs">
+    <Compile Include="Views\GraphsTabControl3.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\GraphsTabControl.Designer.cs">
-      <DependentUpon>GraphsTabControl.cs</DependentUpon>
+    <Compile Include="Views\GraphsTabControl3.Designer.cs">
+      <DependentUpon>GraphsTabControl3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GraphsTabControl2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\GraphsTabControl2.Designer.cs">
+      <DependentUpon>GraphsTabControl2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GraphsTabControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\GraphsTabControl1.Designer.cs">
+      <DependentUpon>GraphsTabControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoadingFormPassive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LoadingFormPassive.Designer.cs">
+      <DependentUpon>LoadingFormPassive.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
@@ -228,14 +252,29 @@
     <Compile Include="Views\LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\WineControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\WineControl.Designer.cs">
+      <DependentUpon>WineControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\DatabaseOverviewTabControl .resx">
       <DependentUpon>DatabaseOverviewTabControl .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DataGeneratorPanell.resx">
       <DependentUpon>DataGeneratorPanell.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\GraphsTabControl.resx">
-      <DependentUpon>GraphsTabControl.cs</DependentUpon>
+    <EmbeddedResource Include="Views\GraphsTabControl3.resx">
+      <DependentUpon>GraphsTabControl3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GraphsTabControl2.resx">
+      <DependentUpon>GraphsTabControl2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GraphsTabControl1.resx">
+      <DependentUpon>GraphsTabControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoadingFormPassive.resx">
+      <DependentUpon>LoadingFormPassive.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -252,6 +291,9 @@
     </Compile>
     <EmbeddedResource Include="Views\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WineControl.resx">
+      <DependentUpon>WineControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DataSet2.xsc">
       <DependentUpon>DataSet2.xsd</DependentUpon>
@@ -289,6 +331,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataBaseQuery\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Deus_Wine.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />

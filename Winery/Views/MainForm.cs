@@ -1,8 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using Winery.Helper;
@@ -12,11 +9,12 @@ namespace Winery
 {
     public partial class MainForm : Form
     {
+        private static Thread loadingThread;
+        public static LoadingFormPassive loadingFormPassive;
+
         public MainForm()
         {
             InitializeComponent();
-            this.databaseOverviewTabControl.Dock = DockStyle.Fill;
-
         }
 
         private void exitMenuItem_Click(object sender, EventArgs e)
@@ -26,9 +24,14 @@ namespace Winery
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            StartLoadingDialog();
+            this.databaseOverviewTabControl.Dock = DockStyle.Fill;
             this.graphsTabControl.Dock = DockStyle.Fill;
+            this.graphsTabControl2.Dock = DockStyle.Fill;
+            this.graphsTabControl3.Dock = DockStyle.Fill;
             this.databaseOverviewTabControl.Visible = true;
-            //this.databaseOverviewTabControl.Init(); 
+            this.databaseOverviewTabControl.Init();
+            CloseLoadingDialog();
         }
 
         private void ResetMenuItems()
@@ -42,7 +45,7 @@ namespace Winery
         private void toolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.ResetMenuItems();
-            ((ToolStripMenuItem)sender).BackColor = System.Drawing.SystemColors.MenuHighlight;
+            ((ToolStripMenuItem)sender).BackColor = SystemColors.MenuHighlight;
             this.ResetViews();
             this.ChangeView((ToolStripMenuItem)sender);
         }
@@ -57,6 +60,8 @@ namespace Winery
 
         private void ChangeView(ToolStripMenuItem sender)
         {
+            MainForm.StartLoadingDialog();
+
             switch (sender.Text)
             {
                 case "Database Overview":
@@ -67,12 +72,80 @@ namespace Winery
                     this.dataGeneratorPanel.Visible = true;
                     break;
 
-                case "Graphs":
+                case "Graphs 1":
                     this.graphsTabControl.Visible = true;
+                    break;
+                case "Graphs 2":
+                    this.graphsTabControl2.Visible = true;
+                    break;
+                case "Graphs 3":
+                    this.graphsTabControl3.LoadedTreeview1 = true;  
+                    this.graphsTabControl3.Visible = true;
+                    break;
+                case "Graphs 4":
+                    //this.graphsTabControl.Visible = true;
+                    break;
+                case "Graphs 5":
+                    //this.graphsTabControl.Visible = true;
+                    break;
+                case "Graphs 6":
+                    //this.graphsTabControl.Visible = true;
                     break;
 
             }
 
+            MainForm.CloseLoadingDialog();
+        }
+
+        public static void StartLoadingDialog()
+        {
+            try
+            {
+                loadingThread = new Thread(() =>
+                {
+                    try
+                    {
+                        MainForm.loadingFormPassive = new LoadingFormPassive();
+                        loadingFormPassive?.ShowDialog();
+                    }
+                    catch (Exception ex)
+                    {
+                        return;
+                    }
+                });
+
+                loadingThread.Start();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+        public static void CloseLoadingDialog()
+        {
+            try
+            {
+                while (!LoadingFormPassive.IsShown)
+                {
+                    Thread.Sleep(50);
+                }
+
+                WinformsHelper.InvokeIfRequired(
+                   MainForm.loadingFormPassive,
+                       () =>
+                       {
+                           MainForm.loadingFormPassive?.Close();
+                       }
+                   );
+
+                loadingThread.Join();
+                loadingThread = null;
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
     }
 }

@@ -15,55 +15,44 @@ namespace Winery.Views
 
         public void Init()
         {
-            LoadingForm loadingDialog = new LoadingForm(() =>
-            {
-                Thread.Sleep(5000);
-                WinformsHelper.InvokeIfRequired(this, () => { this.wINESTableAdapter.Fill(this.dataSet.WINES); });
-            });
-
-            loadingDialog.ShowDialog();
-            loadingDialog.Dispose();
+            WinformsHelper.InvokeIfRequired(this, () => { this.wINESTableAdapter.Fill(this.dataSet.WINES); });
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadingForm loadingDialog = new LoadingForm(() =>
+            MainForm.StartLoadingDialog();
+
+            WinformsHelper.InvokeIfRequired(this, () =>
             {
-                Thread.Sleep(1000);
-                WinformsHelper.InvokeIfRequired(this, () =>
+                switch (((TabControl)sender).SelectedIndex)
                 {
-                    switch (((TabControl)sender).SelectedIndex)
-                    {
-                        case 0:
-                            this.wINESTableAdapter.Fill(this.dataSet.WINES);
-                            break;
-                        case 1:
-                            this.cLIENTSTableAdapter.Fill(this.dataSet.CLIENTS);
-                            break;
-                        case 2:
-                            this.sOLD_WINESTableAdapter.Fill(this.dataSet.SOLD_WINES);
-                            break;
-                        case 3:
-                            this.cOUNTRY_INFOTableAdapter.Fill(this.dataSet.COUNTRY_INFO);
-                            break;
-                        case 4:
-                            this.allDataTableTableAdapter.Fill(this.dataSet.AllDataTable);
-                            break;
-                    }
-                });
+                    case 0:
+                        this.wINESTableAdapter.Fill(this.dataSet.WINES);
+                        break;
+                    case 1:
+                        this.cLIENTSTableAdapter.Fill(this.dataSet.CLIENTS);
+                        break;
+                    case 2:
+                        this.sOLD_WINESTableAdapter.Fill(this.dataSet.SOLD_WINES);
+                        break;
+                    case 3:
+                        this.cOUNTRY_INFOTableAdapter.Fill(this.dataSet.COUNTRY_INFO);
+                        break;
+                    case 4:
+                        this.allDataTableTableAdapter.Fill(this.dataSet.AllDataTable);
+                        break;
+                }
             });
 
-            loadingDialog.ShowDialog();
-            loadingDialog.Dispose();
+            MainForm.CloseLoadingDialog();
         }
 
         #region filter_buttons
         private void winesFilterButton_Click(object sender, EventArgs e)
         {
-            LoadingForm loadingDialog = new LoadingForm(() =>
-            {
-                Thread.Sleep(1000);
-                WinformsHelper.InvokeIfRequired(this, () =>
+            MainForm.StartLoadingDialog();
+
+            WinformsHelper.InvokeIfRequired(this, () =>
                 {
                     BindingSource filteredBs = new BindingSource();
                     filteredBs.DataSource = this.winesGridView.DataSource;
@@ -80,42 +69,34 @@ namespace Winery.Views
                     filteredBs.Filter = builder.ToString();
                     this.winesGridView.DataSource = filteredBs;
                 });
-            });
 
-            loadingDialog.ShowDialog();
-            loadingDialog.Dispose();
+            MainForm.CloseLoadingDialog();
         }
 
         private void clientsFilterButton_Click(object sender, EventArgs e)
         {
-            LoadingForm loadingDialog = new LoadingForm(() =>
+            MainForm.StartLoadingDialog();
+
+            WinformsHelper.InvokeIfRequired(this, () =>
             {
-                Thread.Sleep(1000);
+                BindingSource filteredBs = new BindingSource();
+                filteredBs.DataSource = clientsDataGrid.DataSource;
 
-                WinformsHelper.InvokeIfRequired(this, () =>
-                {
-                    BindingSource filteredBs = new BindingSource();
-                    filteredBs.DataSource = clientsDataGrid.DataSource;
-
-                    StringBuilder builder = new StringBuilder();
-                    builder.Append($"id LIKE '%{idFilter2.Text}%' ");
-                    builder.Append($"AND name LIKE '%{nameFilter2.Text}%' ");
-                    builder.Append($"AND country_id LIKE '%{countryFilter2.Text}%' ");
-                    clientsDataGrid.DataSource = filteredBs;
-                });
+                StringBuilder builder = new StringBuilder();
+                builder.Append($"id LIKE '%{idFilter2.Text}%' ");
+                builder.Append($"AND name LIKE '%{nameFilter2.Text}%' ");
+                builder.Append($"AND country_id LIKE '%{countryFilter2.Text}%' ");
+                clientsDataGrid.DataSource = filteredBs;
             });
 
-            loadingDialog.ShowDialog();
-            loadingDialog.Dispose();
+            MainForm.CloseLoadingDialog();
         }
 
         private void allDataMergedFilterButton_Click(object sender, EventArgs e)
         {
-            LoadingForm loadingDialog = new LoadingForm(() =>
-            {
-                Thread.Sleep(1000);
+            MainForm.StartLoadingDialog();
 
-                WinformsHelper.InvokeIfRequired(this, () =>
+            WinformsHelper.InvokeIfRequired(this, () =>
                 {
                     BindingSource filteredBs = new BindingSource();
                     filteredBs.DataSource = allDataMergedDataGrid.DataSource;
@@ -131,19 +112,16 @@ namespace Winery.Views
                     filteredBs.Filter = builder.ToString();
                     allDataMergedDataGrid.DataSource = filteredBs;
                 });
-            });
 
-            loadingDialog.ShowDialog();
-            loadingDialog.Dispose();
+            MainForm.CloseLoadingDialog();
+
         }
 
         private void soldWinesFilterButton_Click(object sender, EventArgs e)
         {
-            LoadingForm loadingDialog = new LoadingForm(() =>
-            {
-                Thread.Sleep(1000);
+            MainForm.StartLoadingDialog();
 
-                WinformsHelper.InvokeIfRequired(this, () =>
+            WinformsHelper.InvokeIfRequired(this, () =>
                 {
                     BindingSource filteredBs = new BindingSource();
                     filteredBs.DataSource = soldWinesDataGrip.DataSource;
@@ -156,19 +134,15 @@ namespace Winery.Views
                     filteredBs.Filter = builder.ToString();
                     soldWinesDataGrip.DataSource = filteredBs;
                 });
-            });
 
-            loadingDialog.ShowDialog();
-            loadingDialog.Dispose();
+            MainForm.CloseLoadingDialog();
         }
 
         private void countriesFilterButton_Click(object sender, EventArgs e)
         {
-            LoadingForm loadingDialog = new LoadingForm(() =>
-            {
-                Thread.Sleep(1000);
+            MainForm.StartLoadingDialog();
 
-                WinformsHelper.InvokeIfRequired(this, () =>
+            WinformsHelper.InvokeIfRequired(this, () =>
                 {
                     BindingSource filteredBs = new BindingSource();
                     filteredBs.DataSource = dataGridView4.DataSource;
@@ -179,10 +153,8 @@ namespace Winery.Views
                     filteredBs.Filter = builder.ToString();
                     dataGridView4.DataSource = filteredBs;
                 });
-            });
 
-            loadingDialog.ShowDialog();
-            loadingDialog.Dispose();
+            MainForm.CloseLoadingDialog();
         }
 
         #endregion
