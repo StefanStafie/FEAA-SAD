@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 using Winery.Helper;
 
@@ -15,8 +14,9 @@ namespace Winery.Views
 
         public void Init()
         {
-            WinformsHelper.InvokeIfRequired(this, () => { this.wINESTableAdapter.Fill(this.dataSet.WINES); });
+            WinformsHelper.InvokeIfRequired(this, () => { wINESTableAdapter.Fill(dataSet.WINES); });
         }
+
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -27,19 +27,19 @@ namespace Winery.Views
                 switch (((TabControl)sender).SelectedIndex)
                 {
                     case 0:
-                        this.wINESTableAdapter.Fill(this.dataSet.WINES);
+                        wINESTableAdapter.Fill(dataSet.WINES);
                         break;
                     case 1:
-                        this.cLIENTSTableAdapter.Fill(this.dataSet.CLIENTS);
+                        cLIENTSTableAdapter.Fill(dataSet.CLIENTS);
                         break;
                     case 2:
-                        this.sOLD_WINESTableAdapter.Fill(this.dataSet.SOLD_WINES);
+                        sOLD_WINESTableAdapter.Fill(dataSet.SOLD_WINES);
                         break;
                     case 3:
-                        this.cOUNTRY_INFOTableAdapter.Fill(this.dataSet.COUNTRY_INFO);
+                        cOUNTRY_INFOTableAdapter.Fill(dataSet.COUNTRY_INFO);
                         break;
                     case 4:
-                        this.allDataTableTableAdapter.Fill(this.dataSet.AllDataTable);
+                        allDataTableTableAdapter.Fill(dataSet.AllDataTable);
                         break;
                 }
             });
@@ -53,22 +53,25 @@ namespace Winery.Views
             MainForm.StartLoadingDialog();
 
             WinformsHelper.InvokeIfRequired(this, () =>
+            {
+                BindingSource filteredBs = new BindingSource();
+                filteredBs.DataSource = winesGridView.DataSource;
+
+                StringBuilder builder = new StringBuilder();
+                builder.Append($"CONVERT(id, 'System.String') LIKE '%{idFilter1.Text}%' ");
+                if (winePriceLowFilter1.Value < winePriceHighFilter1.Value && winePriceHighFilter1.Value > 0 && winePriceLowFilter1.Value > 0)
                 {
-                    BindingSource filteredBs = new BindingSource();
-                    filteredBs.DataSource = this.winesGridView.DataSource;
+                    builder.Append($"AND price >= {winePriceLowFilter1.Value} AND price <= {winePriceHighFilter1.Value} ");
+                }
 
-                    StringBuilder builder = new StringBuilder();
-                    builder.Append($"CONVERT(id, 'System.String') LIKE '%{idFilter1.Text}%' ");
-                    if (winePriceLowFilter1.Value < winePriceHighFilter1.Value && winePriceHighFilter1.Value > 0 && winePriceLowFilter1.Value > 0)
-                        builder.Append($"AND price >= {winePriceLowFilter1.Value} AND price <= {winePriceHighFilter1.Value} ");
-                    builder.Append($"AND CONVERT(country_id, 'System.String') LIKE '%{countryIdFilter1.Text}%' ");
-                    builder.Append($"AND winery LIKE '%{WineryFilter1.Text}%' ");
-                    builder.Append($"AND name LIKE '%{nameFilter1.Text}%' ");
-                    builder.Append($"AND variety LIKE '%{varietyFilter1.Text}%' ");
+                builder.Append($"AND CONVERT(country_id, 'System.String') LIKE '%{countryIdFilter1.Text}%' ");
+                builder.Append($"AND winery LIKE '%{WineryFilter1.Text}%' ");
+                builder.Append($"AND name LIKE '%{nameFilter1.Text}%' ");
+                builder.Append($"AND variety LIKE '%{varietyFilter1.Text}%' ");
 
-                    filteredBs.Filter = builder.ToString();
-                    this.winesGridView.DataSource = filteredBs;
-                });
+                filteredBs.Filter = builder.ToString();
+                winesGridView.DataSource = filteredBs;
+            });
 
             MainForm.CloseLoadingDialog();
         }
@@ -97,21 +100,24 @@ namespace Winery.Views
             MainForm.StartLoadingDialog();
 
             WinformsHelper.InvokeIfRequired(this, () =>
-                {
-                    BindingSource filteredBs = new BindingSource();
-                    filteredBs.DataSource = allDataMergedDataGrid.DataSource;
+            {
+                BindingSource filteredBs = new BindingSource();
+                filteredBs.DataSource = allDataMergedDataGrid.DataSource;
 
-                    StringBuilder builder = new StringBuilder();
-                    builder.Append($"ClientName LIKE '%{clientNameFilter3.Text}%' ");
-                    builder.Append($"AND ClientDateOfBirth LIKE '%{clientDateOfBirthFilter3.Text}%' ");
-                    builder.Append($"AND WineName LIKE '%{wineNameFlter3.Text}%' ");
-                    builder.Append($"AND WineVariety LIKE '%{wineVarietyFilter3.Text}%' ");
-                    builder.Append($"AND WineCountry LIKE '%{wineCountryFilter3.Text}%' ");
-                    if (winePriceLowFilter3.Value < winePriceHighFilter3.Value && winePriceHighFilter3.Value > 0 && winePriceLowFilter3.Value > 0)
-                        builder.Append($"AND price >= {winePriceLowFilter3.Value} AND price <= {winePriceHighFilter3.Value} ");
-                    filteredBs.Filter = builder.ToString();
-                    allDataMergedDataGrid.DataSource = filteredBs;
-                });
+                StringBuilder builder = new StringBuilder();
+                builder.Append($"ClientName LIKE '%{clientNameFilter3.Text}%' ");
+                builder.Append($"AND ClientDateOfBirth LIKE '%{clientDateOfBirthFilter3.Text}%' ");
+                builder.Append($"AND WineName LIKE '%{wineNameFlter3.Text}%' ");
+                builder.Append($"AND WineVariety LIKE '%{wineVarietyFilter3.Text}%' ");
+                builder.Append($"AND WineCountry LIKE '%{wineCountryFilter3.Text}%' ");
+                if (winePriceLowFilter3.Value < winePriceHighFilter3.Value && winePriceHighFilter3.Value > 0 && winePriceLowFilter3.Value > 0)
+                {
+                    builder.Append($"AND price >= {winePriceLowFilter3.Value} AND price <= {winePriceHighFilter3.Value} ");
+                }
+
+                filteredBs.Filter = builder.ToString();
+                allDataMergedDataGrid.DataSource = filteredBs;
+            });
 
             MainForm.CloseLoadingDialog();
 
@@ -122,18 +128,18 @@ namespace Winery.Views
             MainForm.StartLoadingDialog();
 
             WinformsHelper.InvokeIfRequired(this, () =>
-                {
-                    BindingSource filteredBs = new BindingSource();
-                    filteredBs.DataSource = soldWinesDataGrip.DataSource;
+            {
+                BindingSource filteredBs = new BindingSource();
+                filteredBs.DataSource = soldWinesDataGrip.DataSource;
 
-                    StringBuilder builder = new StringBuilder();
-                    builder.Append($"id LIKE '%{idFilter4.Text}%' ");
-                    builder.Append($"AND id_wine LIKE '%{idWineFilter4.Text}%' ");
-                    builder.Append($"AND id_client LIKE '%{idClientFilter4.Text}%' ");
-                    builder.Append($"AND quantity LIKE '%{quantityFilter4.Text}%' ");
-                    filteredBs.Filter = builder.ToString();
-                    soldWinesDataGrip.DataSource = filteredBs;
-                });
+                StringBuilder builder = new StringBuilder();
+                builder.Append($"id LIKE '%{idFilter4.Text}%' ");
+                builder.Append($"AND id_wine LIKE '%{idWineFilter4.Text}%' ");
+                builder.Append($"AND id_client LIKE '%{idClientFilter4.Text}%' ");
+                builder.Append($"AND quantity LIKE '%{quantityFilter4.Text}%' ");
+                filteredBs.Filter = builder.ToString();
+                soldWinesDataGrip.DataSource = filteredBs;
+            });
 
             MainForm.CloseLoadingDialog();
         }
@@ -143,16 +149,16 @@ namespace Winery.Views
             MainForm.StartLoadingDialog();
 
             WinformsHelper.InvokeIfRequired(this, () =>
-                {
-                    BindingSource filteredBs = new BindingSource();
-                    filteredBs.DataSource = dataGridView4.DataSource;
+            {
+                BindingSource filteredBs = new BindingSource();
+                filteredBs.DataSource = dataGridView4.DataSource;
 
-                    StringBuilder builder = new StringBuilder();
-                    builder.Append($"CONVERT(id, 'System.String') LIKE '%{idFilter5.Text}%' ");
-                    builder.Append($"AND name LIKE '%{nameFilter5.Text}%' ");
-                    filteredBs.Filter = builder.ToString();
-                    dataGridView4.DataSource = filteredBs;
-                });
+                StringBuilder builder = new StringBuilder();
+                builder.Append($"CONVERT(id, 'System.String') LIKE '%{idFilter5.Text}%' ");
+                builder.Append($"AND name LIKE '%{nameFilter5.Text}%' ");
+                filteredBs.Filter = builder.ToString();
+                dataGridView4.DataSource = filteredBs;
+            });
 
             MainForm.CloseLoadingDialog();
         }

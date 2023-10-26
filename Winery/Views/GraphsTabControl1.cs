@@ -17,9 +17,9 @@ namespace Winery.Views
         public GraphsTabControl1()
         {
             InitializeComponent();
-            this.wineryList1.Items.AddRange(DatabaseCommandHelper.GetWineryList().ToArray());
-            this.wineryList2.Items.AddRange(this.wineryList1.Items);
-            this.wineryList3.Items.AddRange(this.wineryList1.Items);
+            wineryList1.Items.AddRange(DatabaseCommandHelper.GetWineryList().ToArray());
+            wineryList2.Items.AddRange(wineryList1.Items);
+            wineryList3.Items.AddRange(wineryList1.Items);
         }
 
         #region Tab1
@@ -28,14 +28,14 @@ namespace Winery.Views
         {
             MainForm.StartLoadingDialog();
 
-            if (this.dateTimeFrom1.Value > this.dateTimeTo1.Value)
+            if (dateTimeFrom1.Value > dateTimeTo1.Value)
             {
                 MainForm.CloseLoadingDialog();
                 MessageBox.Show("The start date is set later than the end date. Unable to create Graph.");
                 return;
             }
 
-            List<string> allowedWineries = this.wineryList1.CheckedItems.Cast<string>().ToList();
+            List<string> allowedWineries = wineryList1.CheckedItems.Cast<string>().ToList();
             if (allowedWineries.Count <= 0)
             {
                 MainForm.CloseLoadingDialog();
@@ -43,14 +43,13 @@ namespace Winery.Views
                 return;
             }
 
-            List<WineryDailySalesModel> salesData = DatabaseCommandHelper.GetDailySales(this.dateTimeFrom1.Value, this.dateTimeTo1.Value);
+            List<WineryDailySalesModel> salesData = DatabaseCommandHelper.GetDailySales(dateTimeFrom1.Value, dateTimeTo1.Value);
 
             var plotModel = new PlotModel
             {
                 Title = "Wine Daily Sales",
             };
 
-            // X-axis
             var dateAxis = new DateTimeAxis
             {
                 Position = AxisPosition.Bottom,
@@ -60,7 +59,6 @@ namespace Winery.Views
 
             plotModel.Axes.Add(dateAxis);
 
-            //  Y-axis
             var salesAxis = new LinearAxis
             {
                 Position = AxisPosition.Left,
@@ -88,7 +86,6 @@ namespace Winery.Views
                 var maxSales = group.Max(item => item);
                 var minSales = group.Min(item => item);
 
-                // line for max and min
                 plotModel.Annotations.Add(new LineAnnotation
                 {
                     Type = LineAnnotationType.Horizontal,
@@ -119,41 +116,42 @@ namespace Winery.Views
                 plotModel.Series.Add(lineSeries);
             }
 
-            this.plotView1.Model = plotModel;
+            plotView1.Model = plotModel;
 
             MainForm.CloseLoadingDialog();
         }
 
         private void ClearSelectionButton1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < this.wineryList1.Items.Count; i++)
+            for (int i = 0; i < wineryList1.Items.Count; i++)
             {
-                this.wineryList1.SetItemCheckState(i, CheckState.Unchecked);
+                wineryList1.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
 
         private void SelectAllButton1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < this.wineryList1.Items.Count; i++)
+            for (int i = 0; i < wineryList1.Items.Count; i++)
             {
-                this.wineryList1.SetItemCheckState(i, CheckState.Checked);
+                wineryList1.SetItemCheckState(i, CheckState.Checked);
             }
         }
+
         #endregion
-        #region tab2
+        #region Tab2
 
         private void createGraph2_Click(object sender, EventArgs e)
         {
             MainForm.StartLoadingDialog();
 
-            List<string> allowedWineries = this.wineryList2.CheckedItems.Cast<string>().ToList();
-            if (this.dateTimeFrom2.Value > this.dateTimeTo2.Value)
+            List<string> allowedWineries = wineryList2.CheckedItems.Cast<string>().ToList();
+            if (dateTimeFrom2.Value > dateTimeTo2.Value)
             {
                 MainForm.CloseLoadingDialog();
                 MessageBox.Show("The start date is set later than the end date. Unable to create Graph.");
                 return;
             }
-            
+
             if (allowedWineries.Count <= 0)
             {
                 MainForm.CloseLoadingDialog();
@@ -161,9 +159,8 @@ namespace Winery.Views
                 return;
             }
 
-            List<WineryDailySalesModel> salesData = DatabaseCommandHelper.GetDailySales(this.dateTimeFrom2.Value, this.dateTimeTo2.Value);
+            List<WineryDailySalesModel> salesData = DatabaseCommandHelper.GetDailySales(dateTimeFrom2.Value, dateTimeTo2.Value);
 
-            // Group the sales data by week
             var weeklySales = salesData.Where(x => allowedWineries.Contains(x.Name))
                                        .GroupBy(s => new { Year = s.Date.Year, Week = WinformsHelper.GetWeek(s.Date) })
                                        .Select(g => new
@@ -180,7 +177,6 @@ namespace Winery.Views
             };
 
 
-            // Create the category axis for weeks
             var categoryAxis = new CategoryAxis
             {
                 Position = AxisPosition.Left,
@@ -191,7 +187,6 @@ namespace Winery.Views
 
             plotModel.Axes.Add(categoryAxis);
 
-            // Create the value axis for sales
             var valueAxis = new LinearAxis
             {
                 Position = AxisPosition.Top,
@@ -208,52 +203,51 @@ namespace Winery.Views
                 ValueField = "Sales",
             };
 
-          
+
             foreach (var week in weeklySales)
             {
                 barSeries.Items.Add(new BarItem { Value = week.Sales, CategoryIndex = categoryAxis.Labels.IndexOf($"{week.Year}-W{week.Week}") });
             }
-            
+
 
             plotModel.Series.Add(barSeries);
 
             plotView2.Model = plotModel;
 
             MainForm.CloseLoadingDialog();
-
         }
 
         private void selectAllbutton2_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < this.wineryList2.Items.Count; i++)
+            for (int i = 0; i < wineryList2.Items.Count; i++)
             {
-                this.wineryList2.SetItemCheckState(i, CheckState.Checked);
+                wineryList2.SetItemCheckState(i, CheckState.Checked);
             }
         }
 
         private void clearAllButton2_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < this.wineryList2.Items.Count; i++)
+            for (int i = 0; i < wineryList2.Items.Count; i++)
             {
-                this.wineryList2.SetItemCheckState(i, CheckState.Unchecked);
+                wineryList2.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
         #endregion
 
-        #region tab3
+        #region Tab3
 
         private void createGraph3_Click(object sender, EventArgs e)
         {
             MainForm.StartLoadingDialog();
-            
-            if (this.dateTimeFrom3.Value > this.dateTimeTo3.Value)
+
+            if (dateTimeFrom3.Value > dateTimeTo3.Value)
             {
                 MainForm.CloseLoadingDialog();
                 MessageBox.Show("The start date is set later than the end date. Unable to create Graph.");
                 return;
             }
 
-            List<string> allowedWineries = this.wineryList3.CheckedItems.Cast<string>().ToList();
+            List<string> allowedWineries = wineryList3.CheckedItems.Cast<string>().ToList();
             if (allowedWineries.Count <= 0)
             {
                 MainForm.CloseLoadingDialog();
@@ -263,10 +257,10 @@ namespace Winery.Views
 
             var plotModel = new PlotModel
             {
-                Title = $"Wine Sales in period: {this.dateTimeFrom3.Text} - {this.dateTimeTo3.Text}",
+                Title = $"Wine Sales in period: {dateTimeFrom3.Text} - {dateTimeTo3.Text}",
             };
 
-            List<WineryDailySalesModel> salesData = DatabaseCommandHelper.GetDailySales(this.dateTimeFrom3.Value, this.dateTimeTo3.Value);
+            List<WineryDailySalesModel> salesData = DatabaseCommandHelper.GetDailySales(dateTimeFrom3.Value, dateTimeTo3.Value);
 
             var allowedSales = salesData.Where(x => allowedWineries.Contains(x.Name));
             var groupedData = allowedSales.GroupBy(salesRecord => salesRecord.Name);
@@ -286,17 +280,17 @@ namespace Winery.Views
 
         private void clearSelectionButton3_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < this.wineryList3.Items.Count; i++)
+            for (int i = 0; i < wineryList3.Items.Count; i++)
             {
-                this.wineryList3.SetItemCheckState(i, CheckState.Unchecked);
+                wineryList3.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
 
         private void selectAllButton3_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < this.wineryList3.Items.Count; i++)
+            for (int i = 0; i < wineryList3.Items.Count; i++)
             {
-                this.wineryList3.SetItemCheckState(i, CheckState.Checked);
+                wineryList3.SetItemCheckState(i, CheckState.Checked);
             }
         }
 

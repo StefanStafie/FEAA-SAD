@@ -17,9 +17,9 @@ namespace Winery.Helper
 
         public static OxyColor GetRandomColor()
         {
-            byte red = (byte)random.Next(256); // Generate a random value between 0 and 255 for red
-            byte green = (byte)random.Next(256); // Generate a random value between 0 and 255 for green
-            byte blue = (byte)random.Next(256); // Generate a random value between 0 and 255 for blue
+            byte red = (byte)random.Next(256);
+            byte green = (byte)random.Next(256);
+            byte blue = (byte)random.Next(256); 
 
             return OxyColor.FromRgb(red, green, blue);
         }
@@ -28,21 +28,19 @@ namespace Winery.Helper
         {
             int range = (endDate - startDate).Days;
             int randomDays = random.Next(range);
+            
             return startDate.AddDays(randomDays);
         }
 
         public static string GenerateRandomGender()
         {
-            int randomNumber = random.Next(2); // Generates 0 or 1
-
+            int randomNumber = random.Next(2);
             if (randomNumber == 0)
             {
                 return "male";
             }
-            else
-            {
-                return "female";
-            }
+            
+            return "female";
         }
 
         public static int GenerateRandomCountry()
@@ -54,12 +52,14 @@ namespace Winery.Helper
             }
 
             int randomIndex = random.Next(0, countryIds.Count);
+
             return countryIds[randomIndex];
         }
 
         public static int GetRandomWineFromList(List<int> wines)
         {
             int randomIndex = random.Next(0, wines.Count);
+
             return wines[randomIndex];
         }
 

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Winery.Models
 {
@@ -14,7 +10,7 @@ namespace Winery.Models
 
         public int CompareTo(ClientWineSummary other)
         {
-            return this.Quantity.CompareTo(other.Quantity);
+            return Quantity.CompareTo(other.Quantity);
         }
     }
 }

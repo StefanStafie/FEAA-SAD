@@ -1,7 +1,5 @@
 ﻿using OxyPlot;
-using OxyPlot.Annotations;
 using OxyPlot.Axes;
-using OxyPlot.Legends;
 using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
@@ -18,17 +16,17 @@ namespace Winery.Views
         public GraphsTabControl2()
         {
             InitializeComponent();
-            this.comboBox2.Items.AddRange(DatabaseCommandHelper.GetWineList().ToArray());
+            comboBox2.Items.AddRange(DatabaseCommandHelper.GetWineList().ToArray());
         }
 
         public void SelectTab(int i)
         {
-            if(i<0 || i > 2)
+            if (i < 0 || i > 2)
             {
                 return;
             }
-            
-            this.tabControl1.SelectedIndex = i;
+
+            tabControl1.SelectedIndex = i;
         }
 
         #region Tab1
@@ -37,23 +35,24 @@ namespace Winery.Views
         {
             MainForm.StartLoadingDialog();
 
-            if (this.clientAgeFrom1.Value > this.clientAgeTo1.Value)
+            if (clientAgeFrom1.Value > clientAgeTo1.Value)
             {
+                MainForm.CloseLoadingDialog();
                 MessageBox.Show("The age interval is not set correctly. Unable to create Graph.");
                 return;
             }
 
-            List<ClientExpensesModel> clientsData = DatabaseCommandHelper.GetClientExpenses((int)this.clientAgeFrom1.Value, (int)this.clientAgeTo1.Value);
+            List<ClientExpensesModel> clientsData = DatabaseCommandHelper.GetClientExpenses((int)clientAgeFrom1.Value, (int)clientAgeTo1.Value);
 
             var maleData = clientsData
-           .Where(client => client.Sex == "male")
-           .GroupBy(client => client.Age)
-           .Select(group => new
-           {
-               Age = group.Key,
-               AverageExpenses = group.Average(client => (double)client.Expenses)
-           })
-           .OrderBy(group => group.Age);
+               .Where(client => client.Sex == "male")
+               .GroupBy(client => client.Age)
+               .Select(group => new
+               {
+                   Age = group.Key,
+                   AverageExpenses = group.Average(client => (double)client.Expenses)
+               })
+               .OrderBy(group => group.Age);
 
             var femaleData = clientsData
                 .Where(client => client.Sex == "female")
@@ -64,11 +63,10 @@ namespace Winery.Views
                     AverageExpenses = group.Average(client => (double)client.Expenses)
                 })
                 .OrderBy(group => group.Age);
-            
+
             var model = new PlotModel
             {
                 Title = "Expenses by Age",
-                
             };
 
             var maleSeries = new LineSeries
@@ -111,48 +109,46 @@ namespace Winery.Views
             model.Axes.Add(xAxis);
             model.Axes.Add(yAxis);
 
-            this.plotView1.Model = model;
+            plotView1.Model = model;
 
-            // Find the age group with the least expenses for males
             var minMaleExpenseGroup = maleData
                 .OrderBy(group => group.AverageExpenses)
                 .First();
 
-            // Find the age group with the least expenses for females
             var minFemaleExpenseGroup = femaleData
                 .OrderBy(group => group.AverageExpenses)
                 .First();
 
-            this.recommandationLabel1.Text = $"Males: Age: {minMaleExpenseGroup.Age}, Average Expenses: {(int)minMaleExpenseGroup.AverageExpenses}" +
+            recommandationLabel1.Text = $"Males: Age: {minMaleExpenseGroup.Age}, Average Expenses: {(int)minMaleExpenseGroup.AverageExpenses}" +
                 $"{Environment.NewLine}{Environment.NewLine}Females: Age: {minFemaleExpenseGroup.Age}, Average Expenses: {(int)minFemaleExpenseGroup.AverageExpenses}" +
-                $"{Environment.NewLine}{Environment.NewLine}Recommendation: Increase publicity to people aged {(minFemaleExpenseGroup.Age + minMaleExpenseGroup.Age)/2-2}";
+                $"{Environment.NewLine}{Environment.NewLine}Recommendation: Increase publicity to people aged {(minFemaleExpenseGroup.Age + minMaleExpenseGroup.Age) / 2 - 2}";
 
             MainForm.CloseLoadingDialog();
         }
 
-
         #endregion
-        #region tab2
+
+        #region Tab2
         private void computeWineRecommendation2_Click(object sender, EventArgs e)
         {
             MainForm.StartLoadingDialog();
 
-            var similarWines = DatabaseCommandHelper.GetSameVarietyWines(this.comboBox2.Text);
+            var similarWines = DatabaseCommandHelper.GetSameVarietyWines(comboBox2.Text);
             int maxRecommendations = 9;
-            this.flowLayoutPanel21.Controls.Clear();
-            foreach(var wine in similarWines)
+            flowLayoutPanel21.Controls.Clear();
+            foreach (var wine in similarWines)
             {
                 if (maxRecommendations < 0)
                 {
                     break;
                 }
                 maxRecommendations--;
-                this.flowLayoutPanel21.Controls.Add(new WineControl(wine));
+                flowLayoutPanel21.Controls.Add(new WineControl(wine));
             }
 
-            var peopleAlsoBought = DatabaseCommandHelper.PeopleAlsoBought(this.comboBox2.Text);
+            var peopleAlsoBought = DatabaseCommandHelper.PeopleAlsoBought(comboBox2.Text);
             maxRecommendations = 9;
-            this.flowLayoutPanel22.Controls.Clear();
+            flowLayoutPanel22.Controls.Clear();
             foreach (var wine in peopleAlsoBought)
             {
                 if (maxRecommendations < 0)
@@ -160,40 +156,47 @@ namespace Winery.Views
                     break;
                 }
                 maxRecommendations--;
-                this.flowLayoutPanel22.Controls.Add(new WineControl(wine));
+                flowLayoutPanel22.Controls.Add(new WineControl(wine));
             }
 
             MainForm.CloseLoadingDialog();
 
+            if(similarWines.Count == 0  && peopleAlsoBought.Count == 0)
+            {
+                MessageBox.Show("There were no similar wines and there were no people who also bought this. Nothing to recommend.");
+            }
+
         }
 
         #endregion
-        #region tab3
+        #region Tab3
 
         private void createGraph3_Click(object sender, EventArgs e)
         {
             MainForm.StartLoadingDialog();
-
-            var plotModel = new PlotModel
+            
+            if (dateTimeFrom3.Value > dateTimeTo3.Value)
             {
-                Title = $"Wine Sales in period: {this.dateTimeFrom3.Text} - {this.dateTimeTo3.Text}",
-            };
-
-            List<string> allowedWineries = this.wineryList3.CheckedItems.Cast<string>().ToList();
-
-            if (allowedWineries.Count <= 0)
-            {
-                MessageBox.Show("There is no winery selection. Unable to create Graph.");
-                return;
-            }
-
-            if (this.dateTimeFrom3.Value > this.dateTimeTo3.Value)
-            {
+                MainForm.CloseLoadingDialog();
                 MessageBox.Show("The start date is set later than the end date. Unable to create Graph.");
                 return;
             }
 
-            List<WineryDailySalesModel> salesData = DatabaseCommandHelper.GetDailySales(this.dateTimeFrom3.Value, this.dateTimeTo3.Value);
+            List<string> allowedWineries = wineryList3.CheckedItems.Cast<string>().ToList();
+
+            if (allowedWineries.Count <= 0)
+            {
+                MainForm.CloseLoadingDialog();
+                MessageBox.Show("There is no winery selection. Unable to create Graph.");
+                return;
+            }
+
+            var plotModel = new PlotModel
+            {
+                Title = $"Wine Sales in period: {dateTimeFrom3.Text} - {dateTimeTo3.Text}",
+            };
+
+            List<WineryDailySalesModel> salesData = DatabaseCommandHelper.GetDailySales(dateTimeFrom3.Value, dateTimeTo3.Value);
 
             var allowedSales = salesData.Where(x => allowedWineries.Contains(x.Name));
             var groupedData = allowedSales.GroupBy(salesRecord => salesRecord.Name);
@@ -213,40 +216,20 @@ namespace Winery.Views
 
         private void clearSelectionButton3_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < this.wineryList3.Items.Count; i++)
+            for (int i = 0; i < wineryList3.Items.Count; i++)
             {
-                this.wineryList3.SetItemCheckState(i, CheckState.Unchecked);
+                wineryList3.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
 
         private void selectAllButton3_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < this.wineryList3.Items.Count; i++)
+            for (int i = 0; i < wineryList3.Items.Count; i++)
             {
-                this.wineryList3.SetItemCheckState(i, CheckState.Checked);
+                wineryList3.SetItemCheckState(i, CheckState.Checked);
             }
         }
 
         #endregion
-
-        private void dateTimeFrom1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimeTo1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -1,12 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Winery.Helper;
 
@@ -21,76 +14,79 @@ namespace Winery.Views
 
         private void GenerateClientsButton_Click(object sender, EventArgs e)
         {
-            if (!this.CheckFormData())
+            MainForm.StartLoadingDialog();
+
+            if (!CheckFormData())
             {
                 return;
             }
 
-            this.GenerateClients(
-                this.birthDateFrom.Value,
-                this.birthDateTo.Value,
-                this.clientGender.Text,
-                this.countryName.Text,
-                this.winePriceFrom.Value,
-                this.winePriceTo.Value,
-                this.totalExpensesFrom.Value,
-                this.totalExpensesTo.Value,
-                this.maxQuantity.Value,
-                this.wineNameFilter.Text,
-                this.saleDateFrom.Value,
-                this.saleDateTo.Value,
-                this.generateCount.Value);
+            GenerateClients(
+                birthDateFrom.Value,
+                birthDateTo.Value,
+                clientGender.Text,
+                countryName.Text,
+                winePriceFrom.Value,
+                winePriceTo.Value,
+                totalExpensesFrom.Value,
+                totalExpensesTo.Value,
+                maxQuantity.Value,
+                wineNameFilter.Text,
+                saleDateFrom.Value,
+                saleDateTo.Value,
+                generateCount.Value);
 
+            MainForm.CloseLoadingDialog();
             MessageBox.Show("Finished generating.");
         }
 
         private bool CheckFormData()
         {
             int legalAge = 18;
-            if (this.birthDateTo.Value < this.birthDateFrom.Value)
+            if (birthDateTo.Value < birthDateFrom.Value)
             {
                 MessageBox.Show("Client date of birth is set incorrectly. End time should be after start time.");
                 return false;
             }
 
-            if (this.birthDateFrom.Value > DateTime.Now.Subtract(TimeSpan.FromDays(legalAge * 365.25)))
+            if (birthDateFrom.Value > DateTime.Now.Subtract(TimeSpan.FromDays(legalAge * 365.25)))
             {
                 MessageBox.Show($"Generated clients would be too young to drink. Please set date of birth before {DateTime.Now.Subtract(TimeSpan.FromDays(legalAge * 365.25)).ToShortDateString()}");
                 return false;
             }
 
-            if (this.winePriceTo.Value < this.winePriceFrom.Value)
+            if (winePriceTo.Value < winePriceFrom.Value)
             {
-                MessageBox.Show($"Wine Price interval is set incorrectly. {this.winePriceFrom.Value} -> {this.winePriceTo.Value}");
+                MessageBox.Show($"Wine Price interval is set incorrectly. {winePriceFrom.Value} -> {winePriceTo.Value}");
                 return false;
             }
 
-            if (this.totalExpensesTo.Value < this.totalExpensesFrom.Value)
+            if (totalExpensesTo.Value < totalExpensesFrom.Value)
             {
-                MessageBox.Show($"Total Expenses interval is set incorrectly. {this.totalExpensesFrom.Value} -> {this.totalExpensesTo.Value}");
+                MessageBox.Show($"Total Expenses interval is set incorrectly. {totalExpensesFrom.Value} -> {totalExpensesTo.Value}");
                 return false;
             }
 
-            if (this.saleDateFrom.Value > this.saleDateTo.Value)
+            if (saleDateFrom.Value > saleDateTo.Value)
             {
                 MessageBox.Show("Date of sale is set incorrectly. End time should be after start time.");
                 return false;
             }
 
-            if (this.saleDateFrom.Value < this.birthDateTo.Value.Add(TimeSpan.FromDays(legalAge * 365.25)))
+            if (saleDateFrom.Value < birthDateTo.Value.Add(TimeSpan.FromDays(legalAge * 365.25)))
             {
                 MessageBox.Show($"Generated clients would be too young to drink. Please set date of birth before {DateTime.Now.Subtract(TimeSpan.FromDays(legalAge * 365.25)).ToShortDateString()}");
                 return false;
             }
 
-            if (String.IsNullOrEmpty(this.clientGender.Text))
+            if (String.IsNullOrEmpty(clientGender.Text))
             {
-                this.clientGender.SelectedValue = "ANY";
+                clientGender.SelectedValue = "ANY";
             }
 
-            if (String.IsNullOrEmpty(this.countryName.Text))
+            if (String.IsNullOrEmpty(countryName.Text))
             {
-                this.countryName.SelectedValue = "ANY";
+                countryName.SelectedValue = "ANY";
             }
 
             return true;
@@ -120,7 +116,7 @@ namespace Winery.Views
 
             for (int i = 0; i < generateCount; i++)
             {
-                var clientId = this.CreateNewClient(birthDateFrom, birthDateTo, countryName, clientGender);
+                var clientId = CreateNewClient(birthDateFrom, birthDateTo, countryName, clientGender);
                 var budget = RandomGenerator.GenerateRandomNumberBetween(totalExpensesFrom, totalExpensesTo);
                 bool finishedBudget = false;
                 while (!finishedBudget)
@@ -162,26 +158,29 @@ namespace Winery.Views
 
         private void GenerateSalesOnlyButton_Click(object sender, EventArgs e)
         {
-            if (!this.CheckFormData())
+            MainForm.StartLoadingDialog();
+
+            if (!CheckFormData())
             {
                 return;
             }
 
-            this.GenerateSales(
-                this.birthDateFrom.Value,
-                this.birthDateTo.Value,
-                this.clientGender.Text,
-                this.countryName.Text,
-                this.winePriceFrom.Value,
-                this.winePriceTo.Value,
-                this.totalExpensesFrom.Value,
-                this.totalExpensesTo.Value,
-                this.maxQuantity.Value,
-                this.wineNameFilter.Text,
-                this.saleDateFrom.Value,
-                this.saleDateTo.Value,
-                this.generateCount.Value);
+            GenerateSales(
+                birthDateFrom.Value,
+                birthDateTo.Value,
+                clientGender.Text,
+                countryName.Text,
+                winePriceFrom.Value,
+                winePriceTo.Value,
+                totalExpensesFrom.Value,
+                totalExpensesTo.Value,
+                maxQuantity.Value,
+                wineNameFilter.Text,
+                saleDateFrom.Value,
+                saleDateTo.Value,
+                generateCount.Value);
 
+            MainForm.CloseLoadingDialog();
             MessageBox.Show("Finished generating.");
         }
 

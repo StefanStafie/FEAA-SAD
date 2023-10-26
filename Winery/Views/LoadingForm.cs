@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
 
 
 namespace Winery.Views
@@ -22,7 +15,7 @@ namespace Winery.Views
             InitializeComponent();
 
             this.task = task;
-            this.onTaskCompleted = null;
+            onTaskCompleted = null;
 
             backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += BackgroundWorker_DoWork;
@@ -32,12 +25,12 @@ namespace Winery.Views
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             // Execute the task on a separate thread.
-            this.task.Invoke();
+            task.Invoke();
         }
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {           
-            this.Close();
+        {
+            Close();
         }
 
         private void LoadingForm_Shown(object sender, EventArgs e)

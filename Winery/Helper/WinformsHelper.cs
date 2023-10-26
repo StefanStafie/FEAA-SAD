@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Winery.Helper
@@ -27,7 +23,6 @@ namespace Winery.Helper
             var cal = System.Globalization.CultureInfo.CurrentCulture.Calendar;
             var weekNum = cal.GetWeekOfYear(date, System.Globalization.CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
 
-            // Adjust for situations where the first week of the year may belong to the previous year
             if (weekNum == 1 && date.Month == 12)
             {
                 return cal.GetWeekOfYear(date.AddDays(7), System.Globalization.CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);

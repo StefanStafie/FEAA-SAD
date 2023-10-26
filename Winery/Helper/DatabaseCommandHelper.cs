@@ -52,6 +52,7 @@ namespace Winery.Helper
 
             return result;
         }
+
         static public List<ClientWineSummary> GetClientWineSumary()
         {
             var result = new List<ClientWineSummary>();
@@ -83,6 +84,7 @@ namespace Winery.Helper
 
             return result;
         }
+
         static public List<SoldWines> GetSoldWines(int age, string gender)
         {
             var result = new List<SoldWines>();
@@ -119,6 +121,7 @@ namespace Winery.Helper
 
             return result;
         }
+
         static public Dictionary<string, Dictionary<string, Dictionary<string, Dictionary<string, Wine>>>> GetWinesTreeview()
         {
             var result = new Dictionary<string, Dictionary<string, Dictionary<string, Dictionary<string, Wine>>>>();
@@ -168,6 +171,7 @@ namespace Winery.Helper
 
             return result;
         }
+
         static public List<WineryDailySalesModel> GetDailySales(DateTime startDate, DateTime endDate)
         {
             var result = new List<WineryDailySalesModel>();
@@ -195,6 +199,7 @@ namespace Winery.Helper
 
             return result;
         }
+
         public static List<string> GetWineryList()
         {
             var result = new List<string>();

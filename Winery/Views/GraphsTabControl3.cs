@@ -86,7 +86,7 @@ namespace Winery.Views
                     flowLayoutPanel1.Controls.SetChildIndex(wineControl, 0);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
@@ -99,7 +99,8 @@ namespace Winery.Views
         }
 
         #endregion
-        #region tab2
+
+        #region Tab2
 
         private void createGraph2_Click(object sender, EventArgs e)
         {
@@ -123,7 +124,6 @@ namespace Winery.Views
                 Title = "Variety by age",
             };
 
-            // X-axis
             var dateAxis = new LinearAxis
             {
                 Position = AxisPosition.Bottom,
@@ -132,7 +132,6 @@ namespace Winery.Views
 
             plotModel.Axes.Add(dateAxis);
 
-            //  Y-axis
             var salesAxis = new LinearAxis
             {
                 Position = AxisPosition.Left,
@@ -158,7 +157,6 @@ namespace Winery.Views
                 var maxQuantity = group.Max(item => item);
                 var minQuantity = group.Min(item => item);
 
-                // line for max and min
                 plotModel.Annotations.Add(new LineAnnotation
                 {
                     Type = LineAnnotationType.Horizontal,
@@ -238,7 +236,6 @@ namespace Winery.Views
                 Title = "Wine popularity",
             };
 
-            // Create the category axis for weeks
             var categoryAxis = new CategoryAxis
             {
                 Position = AxisPosition.Left,
@@ -248,7 +245,6 @@ namespace Winery.Views
             categoryAxis.Labels.AddRange(soldWinesFirst20.Select(x => x.Name).ToList());
             plotModel.Axes.Add(categoryAxis);
 
-            // Create the value axis for sales
             var valueAxis = new LinearAxis
             {
                 Position = AxisPosition.Top,
@@ -256,7 +252,6 @@ namespace Winery.Views
             };
             plotModel.Axes.Add(valueAxis);
 
-            // Create the bar series
             var barSeries = new BarSeries
             {
 
@@ -271,9 +266,7 @@ namespace Winery.Views
                 i++;
             }
 
-
             plotModel.Series.Add(barSeries);
-
             plotView3.Model = plotModel;
 
             computeResultLabel3.Text = $"The most popular wine consumed by {gender3.Text} people aged {ageNumeric3.Value} is {soldWines[0].Name}. Sold quantity: {soldWines[0].Quantity}";
@@ -281,9 +274,6 @@ namespace Winery.Views
             MainForm.CloseLoadingDialog();
         }
 
-
         #endregion
-
-
     }
 }

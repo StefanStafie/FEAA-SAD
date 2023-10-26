@@ -201,7 +201,6 @@
             this.label3.Size = new System.Drawing.Size(20, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "To";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -211,7 +210,6 @@
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "From";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 

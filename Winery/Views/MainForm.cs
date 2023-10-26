@@ -19,24 +19,24 @@ namespace Winery
 
         private void exitMenuItem_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            Dispose();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             StartLoadingDialog();
-            this.databaseOverviewTabControl.Dock = DockStyle.Fill;
-            this.graphsTabControl.Dock = DockStyle.Fill;
-            this.graphsTabControl2.Dock = DockStyle.Fill;
-            this.graphsTabControl3.Dock = DockStyle.Fill;
-            this.databaseOverviewTabControl.Visible = true;
-            this.databaseOverviewTabControl.Init();
+            databaseOverviewTabControl.Dock = DockStyle.Fill;
+            graphsTabControl.Dock = DockStyle.Fill;
+            graphsTabControl2.Dock = DockStyle.Fill;
+            graphsTabControl3.Dock = DockStyle.Fill;
+            databaseOverviewTabControl.Visible = true;
+            databaseOverviewTabControl.Init();
             CloseLoadingDialog();
         }
 
         private void ResetMenuItems()
         {
-            foreach (ToolStripMenuItem item in this.menuStrip1.Items)
+            foreach (ToolStripMenuItem item in menuStrip1.Items)
             {
                 item.BackColor = SystemColors.ActiveCaption;
             }
@@ -44,15 +44,15 @@ namespace Winery
 
         private void toolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.ResetMenuItems();
+            ResetMenuItems();
             ((ToolStripMenuItem)sender).BackColor = SystemColors.MenuHighlight;
-            this.ResetViews();
-            this.ChangeView((ToolStripMenuItem)sender);
+            ResetViews();
+            ChangeView((ToolStripMenuItem)sender);
         }
 
         private void ResetViews()
         {
-            foreach (Control control in this.splitContainer2.Panel2.Controls)
+            foreach (Control control in splitContainer2.Panel2.Controls)
             {
                 control.Visible = false;
             }
@@ -65,33 +65,25 @@ namespace Winery
             switch (sender.Text)
             {
                 case "Database Overview":
-                    this.databaseOverviewTabControl.Visible = true;
+                    databaseOverviewTabControl.Visible = true;
                     break;
 
                 case "Data Generator":
-                    this.dataGeneratorPanel.Visible = true;
+                    dataGeneratorPanel.Visible = true;
                     break;
 
                 case "Graphs 1":
-                    this.graphsTabControl.Visible = true;
+                    graphsTabControl.Visible = true;
                     break;
+                
                 case "Graphs 2":
-                    this.graphsTabControl2.Visible = true;
+                    graphsTabControl2.Visible = true;
                     break;
+                
                 case "Graphs 3":
-                    this.graphsTabControl3.LoadedTreeview1 = true;  
-                    this.graphsTabControl3.Visible = true;
+                    graphsTabControl3.LoadedTreeview1 = true;
+                    graphsTabControl3.Visible = true;
                     break;
-                case "Graphs 4":
-                    //this.graphsTabControl.Visible = true;
-                    break;
-                case "Graphs 5":
-                    //this.graphsTabControl.Visible = true;
-                    break;
-                case "Graphs 6":
-                    //this.graphsTabControl.Visible = true;
-                    break;
-
             }
 
             MainForm.CloseLoadingDialog();
