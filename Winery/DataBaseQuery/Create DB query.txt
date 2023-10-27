@@ -1,0 +1,57 @@
+create table NEW_USER.COUNTRY_INFO
+(
+    "id"   NUMBER(10) not null
+        constraint "country_info_pk"
+            primary key,
+    "name" VARCHAR2(255 char)
+)
+/
+
+create table NEW_USER.WINES
+(
+    "id"         NUMBER(10) not null
+        constraint "vinuri_pk"
+            primary key,
+    "name"       VARCHAR2(255 char),
+    "price"      NUMBER(10),
+    "country_id" NUMBER(10)
+        constraint "wines_country_info_id_fk"
+            references NEW_USER.COUNTRY_INFO
+                on delete cascade,
+    "variety"    VARCHAR2(255 char),
+    "winery"     VARCHAR2(255 char)
+)
+/
+
+create table NEW_USER.CLIENTS
+(
+    "id"            NUMBER(10) not null
+        constraint "clients_pk"
+            primary key,
+    "name"          VARCHAR2(255 char),
+    "country_id"    NUMBER(10)
+        constraint "clients_country_info_id_fk"
+            references NEW_USER.COUNTRY_INFO,
+    "date_of_birth" DATE,
+    SEX             VARCHAR2(20)
+)
+/
+
+create table NEW_USER.SOLD_WINES
+(
+    "id"        NUMBER(10) not null
+        constraint "sold_wines_pk"
+            primary key,
+    "id_wine"   NUMBER(10)
+        constraint "SOLD_WINES_WINES_id_fk"
+            references NEW_USER.WINES
+                on delete cascade,
+    "id_client" NUMBER(10)
+        constraint "SOLD_WINES_CLIENTS_id_fk"
+            references NEW_USER.CLIENTS
+                on delete cascade,
+    "quantity"  NUMBER(10),
+    SALE_DATE   DATE
+)
+/
+
