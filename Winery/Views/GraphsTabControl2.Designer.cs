@@ -40,34 +40,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.CreateGraph1 = new System.Windows.Forms.Button();
+            this.plotView1 = new OxyPlot.WindowsForms.PlotView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.recommendButton2 = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.selectAllButton3 = new System.Windows.Forms.Button();
-            this.clearSelectionButton3 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dateTimeTo3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimeFrom3 = new System.Windows.Forms.DateTimePicker();
-            this.wineryList3 = new System.Windows.Forms.CheckedListBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.createGraph3 = new System.Windows.Forms.Button();
-            this.plotView3 = new OxyPlot.WindowsForms.PlotView();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.label5 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel21 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel22 = new System.Windows.Forms.FlowLayoutPanel();
             this.wINESBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet2 = new Winery.DataSet2();
             this.wINESTableAdapter = new Winery.DataSet2TableAdapters.WINESTableAdapter();
             this.oracleCommand1 = new Oracle.ManagedDataAccess.Client.OracleCommand();
-            this.plotView1 = new OxyPlot.WindowsForms.PlotView();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel21 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel22 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -81,24 +69,18 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wINESBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wINESBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -112,7 +94,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1557, 867);
+            this.tabPage1.Size = new System.Drawing.Size(1031, 355);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Male/Female sales + recommendation";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -139,7 +121,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.plotView1);
-            this.splitContainer1.Size = new System.Drawing.Size(1551, 861);
+            this.splitContainer1.Size = new System.Drawing.Size(1025, 349);
             this.splitContainer1.SplitterDistance = 276;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -230,6 +212,19 @@
             this.CreateGraph1.UseVisualStyleBackColor = true;
             this.CreateGraph1.Click += new System.EventHandler(this.createGraph1_Click);
             // 
+            // plotView1
+            // 
+            this.plotView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.plotView1.Location = new System.Drawing.Point(0, 0);
+            this.plotView1.Name = "plotView1";
+            this.plotView1.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.plotView1.Size = new System.Drawing.Size(745, 349);
+            this.plotView1.TabIndex = 0;
+            this.plotView1.Text = "plotView1";
+            this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.splitContainer2);
@@ -290,180 +285,15 @@
             this.label6.Text = "Computes recommendations for people who bought a certain wine. Recommends what ot" +
     "her people bought and similar varieties.";
             // 
-            // button4
+            // recommendButton2
             // 
             this.recommendButton2.Location = new System.Drawing.Point(6, 104);
-            this.recommendButton2.Name = "button4";
+            this.recommendButton2.Name = "recommendButton2";
             this.recommendButton2.Size = new System.Drawing.Size(257, 23);
             this.recommendButton2.TabIndex = 1;
             this.recommendButton2.Text = "Get Recommendations";
             this.recommendButton2.UseVisualStyleBackColor = true;
             this.recommendButton2.Click += new System.EventHandler(this.computeWineRecommendation2_Click);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.splitContainer3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1557, 867);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "PieChart";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.selectAllButton3);
-            this.splitContainer3.Panel1.Controls.Add(this.clearSelectionButton3);
-            this.splitContainer3.Panel1.Controls.Add(this.label7);
-            this.splitContainer3.Panel1.Controls.Add(this.label8);
-            this.splitContainer3.Panel1.Controls.Add(this.dateTimeTo3);
-            this.splitContainer3.Panel1.Controls.Add(this.dateTimeFrom3);
-            this.splitContainer3.Panel1.Controls.Add(this.wineryList3);
-            this.splitContainer3.Panel1.Controls.Add(this.label9);
-            this.splitContainer3.Panel1.Controls.Add(this.createGraph3);
-            this.splitContainer3.Panel1MinSize = 276;
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.plotView3);
-            this.splitContainer3.Size = new System.Drawing.Size(1557, 867);
-            this.splitContainer3.SplitterDistance = 276;
-            this.splitContainer3.TabIndex = 2;
-            // 
-            // selectAllButton3
-            // 
-            this.selectAllButton3.Location = new System.Drawing.Point(104, 166);
-            this.selectAllButton3.Name = "selectAllButton3";
-            this.selectAllButton3.Size = new System.Drawing.Size(83, 23);
-            this.selectAllButton3.TabIndex = 9;
-            this.selectAllButton3.Text = "Select ALL";
-            this.selectAllButton3.UseVisualStyleBackColor = true;
-            this.selectAllButton3.Click += new System.EventHandler(this.selectAllButton3_Click);
-            // 
-            // clearSelectionButton3
-            // 
-            this.clearSelectionButton3.Location = new System.Drawing.Point(6, 166);
-            this.clearSelectionButton3.Name = "clearSelectionButton3";
-            this.clearSelectionButton3.Size = new System.Drawing.Size(92, 23);
-            this.clearSelectionButton3.TabIndex = 8;
-            this.clearSelectionButton3.Text = "Clear Selection";
-            this.clearSelectionButton3.UseVisualStyleBackColor = true;
-            this.clearSelectionButton3.Click += new System.EventHandler(this.clearSelectionButton3_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(32, 98);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "To";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 72);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(30, 13);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "From";
-            // 
-            // dateTimeTo3
-            // 
-            this.dateTimeTo3.Location = new System.Drawing.Point(69, 92);
-            this.dateTimeTo3.Name = "dateTimeTo3";
-            this.dateTimeTo3.Size = new System.Drawing.Size(194, 20);
-            this.dateTimeTo3.TabIndex = 5;
-            this.dateTimeTo3.Value = new System.DateTime(2021, 1, 1, 13, 59, 0, 0);
-            // 
-            // dateTimeFrom3
-            // 
-            this.dateTimeFrom3.Location = new System.Drawing.Point(69, 66);
-            this.dateTimeFrom3.Name = "dateTimeFrom3";
-            this.dateTimeFrom3.Size = new System.Drawing.Size(194, 20);
-            this.dateTimeFrom3.TabIndex = 4;
-            this.dateTimeFrom3.Value = new System.DateTime(2020, 1, 1, 13, 59, 0, 0);
-            // 
-            // wineryList3
-            // 
-            this.wineryList3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.wineryList3.CheckOnClick = true;
-            this.wineryList3.FormattingEnabled = true;
-            this.wineryList3.Location = new System.Drawing.Point(6, 195);
-            this.wineryList3.Name = "wineryList3";
-            this.wineryList3.Size = new System.Drawing.Size(257, 604);
-            this.wineryList3.Sorted = true;
-            this.wineryList3.TabIndex = 3;
-            // 
-            // label9
-            // 
-            this.label9.Location = new System.Drawing.Point(3, 13);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(270, 51);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "A pie chart used for visualising the sales of each winery in the time period.";
-            // 
-            // createGraph3
-            // 
-            this.createGraph3.Location = new System.Drawing.Point(6, 118);
-            this.createGraph3.Name = "createGraph3";
-            this.createGraph3.Size = new System.Drawing.Size(257, 23);
-            this.createGraph3.TabIndex = 1;
-            this.createGraph3.Text = "Create Graph";
-            this.createGraph3.UseVisualStyleBackColor = true;
-            this.createGraph3.Click += new System.EventHandler(this.createGraph3_Click);
-            // 
-            // plotView3
-            // 
-            this.plotView3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plotView3.Location = new System.Drawing.Point(0, 0);
-            this.plotView3.Name = "plotView3";
-            this.plotView3.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plotView3.Size = new System.Drawing.Size(1277, 867);
-            this.plotView3.TabIndex = 0;
-            this.plotView3.Text = "plotView3";
-            this.plotView3.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.plotView3.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.plotView3.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
-            // 
-            // wINESBindingSource
-            // 
-            this.wINESBindingSource.DataMember = "WINES";
-            this.wINESBindingSource.DataSource = this.dataSet2;
-            // 
-            // dataSet2
-            // 
-            this.dataSet2.DataSetName = "DataSet2";
-            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // wINESTableAdapter
-            // 
-            this.wINESTableAdapter.ClearBeforeFill = true;
-            // 
-            // oracleCommand1
-            // 
-            this.oracleCommand1.Transaction = null;
-            // 
-            // plotView1
-            // 
-            this.plotView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plotView1.Location = new System.Drawing.Point(0, 0);
-            this.plotView1.Name = "plotView1";
-            this.plotView1.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plotView1.Size = new System.Drawing.Size(1271, 861);
-            this.plotView1.TabIndex = 0;
-            this.plotView1.Text = "plotView1";
-            this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
             // splitContainer4
             // 
@@ -485,6 +315,15 @@
             this.splitContainer4.SplitterDistance = 440;
             this.splitContainer4.TabIndex = 0;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Similar Wines";
+            // 
             // flowLayoutPanel21
             // 
             this.flowLayoutPanel21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -495,15 +334,6 @@
             this.flowLayoutPanel21.Name = "flowLayoutPanel21";
             this.flowLayoutPanel21.Size = new System.Drawing.Size(434, 310);
             this.flowLayoutPanel21.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Similar Wines";
             // 
             // label11
             // 
@@ -524,6 +354,24 @@
             this.flowLayoutPanel22.Name = "flowLayoutPanel22";
             this.flowLayoutPanel22.Size = new System.Drawing.Size(295, 310);
             this.flowLayoutPanel22.TabIndex = 2;
+            // 
+            // wINESBindingSource
+            // 
+            this.wINESBindingSource.DataMember = "WINES";
+            this.wINESBindingSource.DataSource = this.dataSet2;
+            // 
+            // dataSet2
+            // 
+            this.dataSet2.DataSetName = "DataSet2";
+            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // wINESTableAdapter
+            // 
+            this.wINESTableAdapter.ClearBeforeFill = true;
+            // 
+            // oracleCommand1
+            // 
+            this.oracleCommand1.Transaction = null;
             // 
             // GraphsTabControl2
             // 
@@ -547,20 +395,14 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel1.PerformLayout();
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.wINESBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel1.PerformLayout();
             this.splitContainer4.Panel2.ResumeLayout(false);
             this.splitContainer4.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.wINESBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -581,18 +423,6 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.Button recommendButton2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.Button selectAllButton3;
-        private System.Windows.Forms.Button clearSelectionButton3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimeTo3;
-        private System.Windows.Forms.DateTimePicker dateTimeFrom3;
-        private System.Windows.Forms.CheckedListBox wineryList3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button createGraph3;
-        private OxyPlot.WindowsForms.PlotView plotView3;
         private System.Windows.Forms.Label recommandationLabel1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown clientAgeTo1;

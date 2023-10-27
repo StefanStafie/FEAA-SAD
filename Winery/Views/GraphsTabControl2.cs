@@ -169,67 +169,6 @@ namespace Winery.Views
         }
 
         #endregion
-        #region Tab3
-
-        private void createGraph3_Click(object sender, EventArgs e)
-        {
-            MainForm.StartLoadingDialog();
-            
-            if (dateTimeFrom3.Value > dateTimeTo3.Value)
-            {
-                MainForm.CloseLoadingDialog();
-                MessageBox.Show("The start date is set later than the end date. Unable to create Graph.");
-                return;
-            }
-
-            List<string> allowedWineries = wineryList3.CheckedItems.Cast<string>().ToList();
-
-            if (allowedWineries.Count <= 0)
-            {
-                MainForm.CloseLoadingDialog();
-                MessageBox.Show("There is no winery selection. Unable to create Graph.");
-                return;
-            }
-
-            var plotModel = new PlotModel
-            {
-                Title = $"Wine Sales in period: {dateTimeFrom3.Text} - {dateTimeTo3.Text}",
-            };
-
-            List<WineryDailySalesModel> salesData = DatabaseCommandHelper.GetDailySales(dateTimeFrom3.Value, dateTimeTo3.Value);
-
-            var allowedSales = salesData.Where(x => allowedWineries.Contains(x.Name));
-            var groupedData = allowedSales.GroupBy(salesRecord => salesRecord.Name);
-
-            var pieSeries = new PieSeries();
-
-            foreach (var group in groupedData)
-            {
-                pieSeries.Slices.Add(new PieSlice(group.Key, group.Sum(x => x.Sales)));
-            }
-
-            plotModel.Series.Add(pieSeries);
-            plotView3.Model = plotModel;
-
-            MainForm.CloseLoadingDialog();
-        }
-
-        private void clearSelectionButton3_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < wineryList3.Items.Count; i++)
-            {
-                wineryList3.SetItemCheckState(i, CheckState.Unchecked);
-            }
-        }
-
-        private void selectAllButton3_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < wineryList3.Items.Count; i++)
-            {
-                wineryList3.SetItemCheckState(i, CheckState.Checked);
-            }
-        }
-
-        #endregion
+       
     }
 }
