@@ -135,6 +135,8 @@
             this.dataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOUNTRY_INFOTableAdapter = new Winery.DataSet2TableAdapters.COUNTRY_INFOTableAdapter();
             this.allDataTableTableAdapter = new Winery.DataSet2TableAdapters.AllDataTableTableAdapter();
+            this.allDataTableTableAdapter1 = new Winery.DataSet2TableAdapters.AllDataTableTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.WinesPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -200,7 +202,7 @@
             this.WinesPage.Controls.Add(this.splitContainer1);
             this.WinesPage.Location = new System.Drawing.Point(4, 22);
             this.WinesPage.Name = "WinesPage";
-            this.WinesPage.Padding = new System.Windows.Forms.Padding(3);
+            this.WinesPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.WinesPage.Size = new System.Drawing.Size(1191, 589);
             this.WinesPage.TabIndex = 0;
             this.WinesPage.Text = "Wines";
@@ -212,12 +214,13 @@
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.winePriceLowFilter1);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
@@ -248,7 +251,7 @@
             // winePriceLowFilter1
             // 
             this.winePriceLowFilter1.Location = new System.Drawing.Point(122, 59);
-            this.winePriceLowFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.winePriceLowFilter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.winePriceLowFilter1.Name = "winePriceLowFilter1";
             this.winePriceLowFilter1.Size = new System.Drawing.Size(60, 20);
             this.winePriceLowFilter1.TabIndex = 1;
@@ -276,7 +279,7 @@
             // winePriceHighFilter1
             // 
             this.winePriceHighFilter1.Location = new System.Drawing.Point(122, 83);
-            this.winePriceHighFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.winePriceHighFilter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.winePriceHighFilter1.Name = "winePriceHighFilter1";
             this.winePriceHighFilter1.Size = new System.Drawing.Size(60, 20);
             this.winePriceHighFilter1.TabIndex = 15;
@@ -284,7 +287,7 @@
             // filterButton
             // 
             this.filterButton.Location = new System.Drawing.Point(7, 189);
-            this.filterButton.Margin = new System.Windows.Forms.Padding(2);
+            this.filterButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.filterButton.Name = "filterButton";
             this.filterButton.Size = new System.Drawing.Size(175, 26);
             this.filterButton.TabIndex = 12;
@@ -355,7 +358,7 @@
             // WineryFilter1
             // 
             this.WineryFilter1.Location = new System.Drawing.Point(94, 155);
-            this.WineryFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.WineryFilter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.WineryFilter1.Name = "WineryFilter1";
             this.WineryFilter1.Size = new System.Drawing.Size(88, 20);
             this.WineryFilter1.TabIndex = 5;
@@ -363,7 +366,7 @@
             // varietyFilter1
             // 
             this.varietyFilter1.Location = new System.Drawing.Point(94, 131);
-            this.varietyFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.varietyFilter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.varietyFilter1.Name = "varietyFilter1";
             this.varietyFilter1.Size = new System.Drawing.Size(88, 20);
             this.varietyFilter1.TabIndex = 4;
@@ -371,7 +374,7 @@
             // countryIdFilter1
             // 
             this.countryIdFilter1.Location = new System.Drawing.Point(94, 107);
-            this.countryIdFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.countryIdFilter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.countryIdFilter1.Name = "countryIdFilter1";
             this.countryIdFilter1.Size = new System.Drawing.Size(88, 20);
             this.countryIdFilter1.TabIndex = 3;
@@ -379,7 +382,7 @@
             // idFilter1
             // 
             this.idFilter1.Location = new System.Drawing.Point(94, 11);
-            this.idFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.idFilter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.idFilter1.Name = "idFilter1";
             this.idFilter1.Size = new System.Drawing.Size(88, 20);
             this.idFilter1.TabIndex = 1;
@@ -387,7 +390,7 @@
             // nameFilter1
             // 
             this.nameFilter1.Location = new System.Drawing.Point(94, 35);
-            this.nameFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.nameFilter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nameFilter1.Name = "nameFilter1";
             this.nameFilter1.Size = new System.Drawing.Size(88, 20);
             this.nameFilter1.TabIndex = 0;
@@ -416,37 +419,49 @@
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
             this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Width = 125;
             // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.Width = 125;
             // 
             // priceDataGridViewTextBoxColumn
             // 
             this.priceDataGridViewTextBoxColumn.DataPropertyName = "price";
             this.priceDataGridViewTextBoxColumn.HeaderText = "price";
+            this.priceDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.Width = 125;
             // 
             // countryidDataGridViewTextBoxColumn
             // 
             this.countryidDataGridViewTextBoxColumn.DataPropertyName = "country_id";
             this.countryidDataGridViewTextBoxColumn.HeaderText = "country_id";
+            this.countryidDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.countryidDataGridViewTextBoxColumn.Name = "countryidDataGridViewTextBoxColumn";
+            this.countryidDataGridViewTextBoxColumn.Width = 125;
             // 
             // varietyDataGridViewTextBoxColumn
             // 
             this.varietyDataGridViewTextBoxColumn.DataPropertyName = "variety";
             this.varietyDataGridViewTextBoxColumn.HeaderText = "variety";
+            this.varietyDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.varietyDataGridViewTextBoxColumn.Name = "varietyDataGridViewTextBoxColumn";
+            this.varietyDataGridViewTextBoxColumn.Width = 125;
             // 
             // wineryDataGridViewTextBoxColumn
             // 
             this.wineryDataGridViewTextBoxColumn.DataPropertyName = "winery";
             this.wineryDataGridViewTextBoxColumn.HeaderText = "winery";
+            this.wineryDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.wineryDataGridViewTextBoxColumn.Name = "wineryDataGridViewTextBoxColumn";
+            this.wineryDataGridViewTextBoxColumn.Width = 125;
             // 
             // wINESBindingSource
             // 
@@ -464,7 +479,7 @@
             this.ClientsPage.Controls.Add(this.splitContainer3);
             this.ClientsPage.Location = new System.Drawing.Point(4, 22);
             this.ClientsPage.Name = "ClientsPage";
-            this.ClientsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ClientsPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.ClientsPage.Size = new System.Drawing.Size(1191, 589);
             this.ClientsPage.TabIndex = 1;
             this.ClientsPage.Text = "Clients";
@@ -476,7 +491,7 @@
             this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer3.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
@@ -503,7 +518,7 @@
             // winesFilterButton
             // 
             this.winesFilterButton.Location = new System.Drawing.Point(7, 93);
-            this.winesFilterButton.Margin = new System.Windows.Forms.Padding(2);
+            this.winesFilterButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.winesFilterButton.Name = "winesFilterButton";
             this.winesFilterButton.Size = new System.Drawing.Size(175, 26);
             this.winesFilterButton.TabIndex = 12;
@@ -544,7 +559,7 @@
             // countryFilter2
             // 
             this.countryFilter2.Location = new System.Drawing.Point(94, 59);
-            this.countryFilter2.Margin = new System.Windows.Forms.Padding(2);
+            this.countryFilter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.countryFilter2.Name = "countryFilter2";
             this.countryFilter2.Size = new System.Drawing.Size(88, 20);
             this.countryFilter2.TabIndex = 3;
@@ -552,7 +567,7 @@
             // idFilter2
             // 
             this.idFilter2.Location = new System.Drawing.Point(94, 11);
-            this.idFilter2.Margin = new System.Windows.Forms.Padding(2);
+            this.idFilter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.idFilter2.Name = "idFilter2";
             this.idFilter2.Size = new System.Drawing.Size(88, 20);
             this.idFilter2.TabIndex = 1;
@@ -560,7 +575,7 @@
             // nameFilter2
             // 
             this.nameFilter2.Location = new System.Drawing.Point(94, 35);
-            this.nameFilter2.Margin = new System.Windows.Forms.Padding(2);
+            this.nameFilter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nameFilter2.Name = "nameFilter2";
             this.nameFilter2.Size = new System.Drawing.Size(88, 20);
             this.nameFilter2.TabIndex = 0;
@@ -587,25 +602,33 @@
             // 
             this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
             this.idDataGridViewTextBoxColumn1.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.Width = 125;
             // 
             // nameDataGridViewTextBoxColumn1
             // 
             this.nameDataGridViewTextBoxColumn1.DataPropertyName = "name";
             this.nameDataGridViewTextBoxColumn1.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.Width = 125;
             // 
             // countryidDataGridViewTextBoxColumn1
             // 
             this.countryidDataGridViewTextBoxColumn1.DataPropertyName = "country_id";
             this.countryidDataGridViewTextBoxColumn1.HeaderText = "country_id";
+            this.countryidDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.countryidDataGridViewTextBoxColumn1.Name = "countryidDataGridViewTextBoxColumn1";
+            this.countryidDataGridViewTextBoxColumn1.Width = 125;
             // 
             // dateofbirthDataGridViewTextBoxColumn
             // 
             this.dateofbirthDataGridViewTextBoxColumn.DataPropertyName = "date_of_birth";
             this.dateofbirthDataGridViewTextBoxColumn.HeaderText = "date_of_birth";
+            this.dateofbirthDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dateofbirthDataGridViewTextBoxColumn.Name = "dateofbirthDataGridViewTextBoxColumn";
+            this.dateofbirthDataGridViewTextBoxColumn.Width = 125;
             // 
             // cLIENTSBindingSource
             // 
@@ -618,7 +641,7 @@
             this.soldWinesPage.Controls.Add(this.splitContainer4);
             this.soldWinesPage.Location = new System.Drawing.Point(4, 22);
             this.soldWinesPage.Name = "soldWinesPage";
-            this.soldWinesPage.Padding = new System.Windows.Forms.Padding(3);
+            this.soldWinesPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.soldWinesPage.Size = new System.Drawing.Size(1191, 589);
             this.soldWinesPage.TabIndex = 2;
             this.soldWinesPage.Text = "Sold Wines";
@@ -630,7 +653,7 @@
             this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer4.IsSplitterFixed = true;
             this.splitContainer4.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer4.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer4.Name = "splitContainer4";
             // 
             // splitContainer4.Panel1
@@ -669,7 +692,7 @@
             // quantityFilter4
             // 
             this.quantityFilter4.Location = new System.Drawing.Point(94, 83);
-            this.quantityFilter4.Margin = new System.Windows.Forms.Padding(2);
+            this.quantityFilter4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.quantityFilter4.Name = "quantityFilter4";
             this.quantityFilter4.Size = new System.Drawing.Size(88, 20);
             this.quantityFilter4.TabIndex = 13;
@@ -677,7 +700,7 @@
             // soldWinesFilterButton
             // 
             this.soldWinesFilterButton.Location = new System.Drawing.Point(7, 124);
-            this.soldWinesFilterButton.Margin = new System.Windows.Forms.Padding(2);
+            this.soldWinesFilterButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.soldWinesFilterButton.Name = "soldWinesFilterButton";
             this.soldWinesFilterButton.Size = new System.Drawing.Size(175, 26);
             this.soldWinesFilterButton.TabIndex = 12;
@@ -718,7 +741,7 @@
             // idClientFilter4
             // 
             this.idClientFilter4.Location = new System.Drawing.Point(94, 59);
-            this.idClientFilter4.Margin = new System.Windows.Forms.Padding(2);
+            this.idClientFilter4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.idClientFilter4.Name = "idClientFilter4";
             this.idClientFilter4.Size = new System.Drawing.Size(88, 20);
             this.idClientFilter4.TabIndex = 3;
@@ -726,7 +749,7 @@
             // idFilter4
             // 
             this.idFilter4.Location = new System.Drawing.Point(94, 11);
-            this.idFilter4.Margin = new System.Windows.Forms.Padding(2);
+            this.idFilter4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.idFilter4.Name = "idFilter4";
             this.idFilter4.Size = new System.Drawing.Size(88, 20);
             this.idFilter4.TabIndex = 1;
@@ -734,7 +757,7 @@
             // idWineFilter4
             // 
             this.idWineFilter4.Location = new System.Drawing.Point(94, 35);
-            this.idWineFilter4.Margin = new System.Windows.Forms.Padding(2);
+            this.idWineFilter4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.idWineFilter4.Name = "idWineFilter4";
             this.idWineFilter4.Size = new System.Drawing.Size(88, 20);
             this.idWineFilter4.TabIndex = 0;
@@ -762,31 +785,41 @@
             // 
             this.idDataGridViewTextBoxColumn2.DataPropertyName = "id";
             this.idDataGridViewTextBoxColumn2.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
+            this.idDataGridViewTextBoxColumn2.Width = 125;
             // 
             // idwineDataGridViewTextBoxColumn
             // 
             this.idwineDataGridViewTextBoxColumn.DataPropertyName = "id_wine";
             this.idwineDataGridViewTextBoxColumn.HeaderText = "id_wine";
+            this.idwineDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idwineDataGridViewTextBoxColumn.Name = "idwineDataGridViewTextBoxColumn";
+            this.idwineDataGridViewTextBoxColumn.Width = 125;
             // 
             // idclientDataGridViewTextBoxColumn
             // 
             this.idclientDataGridViewTextBoxColumn.DataPropertyName = "id_client";
             this.idclientDataGridViewTextBoxColumn.HeaderText = "id_client";
+            this.idclientDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idclientDataGridViewTextBoxColumn.Name = "idclientDataGridViewTextBoxColumn";
+            this.idclientDataGridViewTextBoxColumn.Width = 125;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
             this.quantityDataGridViewTextBoxColumn.HeaderText = "quantity";
+            this.quantityDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.Width = 125;
             // 
             // sALEDATEDataGridViewTextBoxColumn
             // 
             this.sALEDATEDataGridViewTextBoxColumn.DataPropertyName = "SALE_DATE";
             this.sALEDATEDataGridViewTextBoxColumn.HeaderText = "SALE_DATE";
+            this.sALEDATEDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.sALEDATEDataGridViewTextBoxColumn.Name = "sALEDATEDataGridViewTextBoxColumn";
+            this.sALEDATEDataGridViewTextBoxColumn.Width = 125;
             // 
             // sOLDWINESBindingSource
             // 
@@ -799,7 +832,7 @@
             this.countriesPage.Controls.Add(this.splitContainer5);
             this.countriesPage.Location = new System.Drawing.Point(4, 22);
             this.countriesPage.Name = "countriesPage";
-            this.countriesPage.Padding = new System.Windows.Forms.Padding(3);
+            this.countriesPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.countriesPage.Size = new System.Drawing.Size(1191, 589);
             this.countriesPage.TabIndex = 3;
             this.countriesPage.Text = "Countries";
@@ -811,7 +844,7 @@
             this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer5.IsSplitterFixed = true;
             this.splitContainer5.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer5.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer5.Name = "splitContainer5";
             // 
             // splitContainer5.Panel1
@@ -836,7 +869,7 @@
             // countriesFilterButton
             // 
             this.countriesFilterButton.Location = new System.Drawing.Point(7, 59);
-            this.countriesFilterButton.Margin = new System.Windows.Forms.Padding(2);
+            this.countriesFilterButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.countriesFilterButton.Name = "countriesFilterButton";
             this.countriesFilterButton.Size = new System.Drawing.Size(175, 26);
             this.countriesFilterButton.TabIndex = 12;
@@ -867,7 +900,7 @@
             // idFilter5
             // 
             this.idFilter5.Location = new System.Drawing.Point(94, 11);
-            this.idFilter5.Margin = new System.Windows.Forms.Padding(2);
+            this.idFilter5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.idFilter5.Name = "idFilter5";
             this.idFilter5.Size = new System.Drawing.Size(88, 20);
             this.idFilter5.TabIndex = 1;
@@ -875,7 +908,7 @@
             // nameFilter5
             // 
             this.nameFilter5.Location = new System.Drawing.Point(94, 35);
-            this.nameFilter5.Margin = new System.Windows.Forms.Padding(2);
+            this.nameFilter5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nameFilter5.Name = "nameFilter5";
             this.nameFilter5.Size = new System.Drawing.Size(88, 20);
             this.nameFilter5.TabIndex = 0;
@@ -900,13 +933,17 @@
             // 
             this.idDataGridViewTextBoxColumn3.DataPropertyName = "id";
             this.idDataGridViewTextBoxColumn3.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn3.Name = "idDataGridViewTextBoxColumn3";
+            this.idDataGridViewTextBoxColumn3.Width = 125;
             // 
             // nameDataGridViewTextBoxColumn2
             // 
             this.nameDataGridViewTextBoxColumn2.DataPropertyName = "name";
             this.nameDataGridViewTextBoxColumn2.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
+            this.nameDataGridViewTextBoxColumn2.Width = 125;
             // 
             // cOUNTRYINFOBindingSource
             // 
@@ -919,7 +956,7 @@
             this.allDataPage.Controls.Add(this.splitContainer6);
             this.allDataPage.Location = new System.Drawing.Point(4, 22);
             this.allDataPage.Name = "allDataPage";
-            this.allDataPage.Padding = new System.Windows.Forms.Padding(3);
+            this.allDataPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.allDataPage.Size = new System.Drawing.Size(1191, 589);
             this.allDataPage.TabIndex = 4;
             this.allDataPage.Text = "All Data Merged";
@@ -931,7 +968,7 @@
             this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer6.IsSplitterFixed = true;
             this.splitContainer6.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer6.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer6.Name = "splitContainer6";
             // 
             // splitContainer6.Panel1
@@ -967,7 +1004,7 @@
             // winePriceLowFilter3
             // 
             this.winePriceLowFilter3.Location = new System.Drawing.Point(117, 131);
-            this.winePriceLowFilter3.Margin = new System.Windows.Forms.Padding(2);
+            this.winePriceLowFilter3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.winePriceLowFilter3.Name = "winePriceLowFilter3";
             this.winePriceLowFilter3.Size = new System.Drawing.Size(60, 20);
             this.winePriceLowFilter3.TabIndex = 1;
@@ -995,7 +1032,7 @@
             // winePriceHighFilter3
             // 
             this.winePriceHighFilter3.Location = new System.Drawing.Point(117, 155);
-            this.winePriceHighFilter3.Margin = new System.Windows.Forms.Padding(2);
+            this.winePriceHighFilter3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.winePriceHighFilter3.Name = "winePriceHighFilter3";
             this.winePriceHighFilter3.Size = new System.Drawing.Size(60, 20);
             this.winePriceHighFilter3.TabIndex = 15;
@@ -1003,7 +1040,7 @@
             // allDataMergedFilterButton
             // 
             this.allDataMergedFilterButton.Location = new System.Drawing.Point(4, 179);
-            this.allDataMergedFilterButton.Margin = new System.Windows.Forms.Padding(2);
+            this.allDataMergedFilterButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.allDataMergedFilterButton.Name = "allDataMergedFilterButton";
             this.allDataMergedFilterButton.Size = new System.Drawing.Size(175, 26);
             this.allDataMergedFilterButton.TabIndex = 12;
@@ -1074,7 +1111,7 @@
             // wineCountryFilter3
             // 
             this.wineCountryFilter3.Location = new System.Drawing.Point(94, 107);
-            this.wineCountryFilter3.Margin = new System.Windows.Forms.Padding(2);
+            this.wineCountryFilter3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.wineCountryFilter3.Name = "wineCountryFilter3";
             this.wineCountryFilter3.Size = new System.Drawing.Size(88, 20);
             this.wineCountryFilter3.TabIndex = 5;
@@ -1082,7 +1119,7 @@
             // wineVarietyFilter3
             // 
             this.wineVarietyFilter3.Location = new System.Drawing.Point(94, 83);
-            this.wineVarietyFilter3.Margin = new System.Windows.Forms.Padding(2);
+            this.wineVarietyFilter3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.wineVarietyFilter3.Name = "wineVarietyFilter3";
             this.wineVarietyFilter3.Size = new System.Drawing.Size(88, 20);
             this.wineVarietyFilter3.TabIndex = 4;
@@ -1090,7 +1127,7 @@
             // wineNameFlter3
             // 
             this.wineNameFlter3.Location = new System.Drawing.Point(94, 59);
-            this.wineNameFlter3.Margin = new System.Windows.Forms.Padding(2);
+            this.wineNameFlter3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.wineNameFlter3.Name = "wineNameFlter3";
             this.wineNameFlter3.Size = new System.Drawing.Size(88, 20);
             this.wineNameFlter3.TabIndex = 3;
@@ -1098,7 +1135,7 @@
             // clientNameFilter3
             // 
             this.clientNameFilter3.Location = new System.Drawing.Point(94, 11);
-            this.clientNameFilter3.Margin = new System.Windows.Forms.Padding(2);
+            this.clientNameFilter3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.clientNameFilter3.Name = "clientNameFilter3";
             this.clientNameFilter3.Size = new System.Drawing.Size(88, 20);
             this.clientNameFilter3.TabIndex = 1;
@@ -1106,7 +1143,7 @@
             // clientDateOfBirthFilter3
             // 
             this.clientDateOfBirthFilter3.Location = new System.Drawing.Point(94, 35);
-            this.clientDateOfBirthFilter3.Margin = new System.Windows.Forms.Padding(2);
+            this.clientDateOfBirthFilter3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.clientDateOfBirthFilter3.Name = "clientDateOfBirthFilter3";
             this.clientDateOfBirthFilter3.Size = new System.Drawing.Size(88, 20);
             this.clientDateOfBirthFilter3.TabIndex = 0;
@@ -1137,49 +1174,65 @@
             // 
             this.clientNameDataGridViewTextBoxColumn.DataPropertyName = "ClientName";
             this.clientNameDataGridViewTextBoxColumn.HeaderText = "ClientName";
+            this.clientNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.clientNameDataGridViewTextBoxColumn.Name = "clientNameDataGridViewTextBoxColumn";
+            this.clientNameDataGridViewTextBoxColumn.Width = 125;
             // 
             // clientDateOfBirthDataGridViewTextBoxColumn
             // 
             this.clientDateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "ClientDateOfBirth";
             this.clientDateOfBirthDataGridViewTextBoxColumn.HeaderText = "ClientDateOfBirth";
+            this.clientDateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.clientDateOfBirthDataGridViewTextBoxColumn.Name = "clientDateOfBirthDataGridViewTextBoxColumn";
+            this.clientDateOfBirthDataGridViewTextBoxColumn.Width = 125;
             // 
             // wineNameDataGridViewTextBoxColumn
             // 
             this.wineNameDataGridViewTextBoxColumn.DataPropertyName = "WineName";
             this.wineNameDataGridViewTextBoxColumn.HeaderText = "WineName";
+            this.wineNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.wineNameDataGridViewTextBoxColumn.Name = "wineNameDataGridViewTextBoxColumn";
+            this.wineNameDataGridViewTextBoxColumn.Width = 125;
             // 
             // wineVarietyDataGridViewTextBoxColumn
             // 
             this.wineVarietyDataGridViewTextBoxColumn.DataPropertyName = "WineVariety";
             this.wineVarietyDataGridViewTextBoxColumn.HeaderText = "WineVariety";
+            this.wineVarietyDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.wineVarietyDataGridViewTextBoxColumn.Name = "wineVarietyDataGridViewTextBoxColumn";
+            this.wineVarietyDataGridViewTextBoxColumn.Width = 125;
             // 
             // wineryDataGridViewTextBoxColumn1
             // 
             this.wineryDataGridViewTextBoxColumn1.DataPropertyName = "Winery";
             this.wineryDataGridViewTextBoxColumn1.HeaderText = "Winery";
+            this.wineryDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.wineryDataGridViewTextBoxColumn1.Name = "wineryDataGridViewTextBoxColumn1";
+            this.wineryDataGridViewTextBoxColumn1.Width = 125;
             // 
             // wineCountryDataGridViewTextBoxColumn
             // 
             this.wineCountryDataGridViewTextBoxColumn.DataPropertyName = "WineCountry";
             this.wineCountryDataGridViewTextBoxColumn.HeaderText = "WineCountry";
+            this.wineCountryDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.wineCountryDataGridViewTextBoxColumn.Name = "wineCountryDataGridViewTextBoxColumn";
+            this.wineCountryDataGridViewTextBoxColumn.Width = 125;
             // 
             // winePriceDataGridViewTextBoxColumn
             // 
             this.winePriceDataGridViewTextBoxColumn.DataPropertyName = "WinePrice";
             this.winePriceDataGridViewTextBoxColumn.HeaderText = "WinePrice";
+            this.winePriceDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.winePriceDataGridViewTextBoxColumn.Name = "winePriceDataGridViewTextBoxColumn";
+            this.winePriceDataGridViewTextBoxColumn.Width = 125;
             // 
             // quantityDataGridViewTextBoxColumn1
             // 
             this.quantityDataGridViewTextBoxColumn1.DataPropertyName = "Quantity";
             this.quantityDataGridViewTextBoxColumn1.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.quantityDataGridViewTextBoxColumn1.Name = "quantityDataGridViewTextBoxColumn1";
+            this.quantityDataGridViewTextBoxColumn1.Width = 125;
             // 
             // allDataTableBindingSource
             // 
@@ -1210,6 +1263,20 @@
             // allDataTableTableAdapter
             // 
             this.allDataTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // allDataTableTableAdapter1
+            // 
+            this.allDataTableTableAdapter1.ClearBeforeFill = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(7, 220);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(175, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Export To Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.exportToExcelButton1_Click);
             // 
             // DatabaseOverviewTabControl
             // 
@@ -1377,5 +1444,7 @@
         private System.Windows.Forms.BindingSource dataSetBindingSource;
         private DataSet2TableAdapters.COUNTRY_INFOTableAdapter cOUNTRY_INFOTableAdapter;
         private DataSet2TableAdapters.AllDataTableTableAdapter allDataTableTableAdapter;
+        private DataSet2TableAdapters.AllDataTableTableAdapter allDataTableTableAdapter1;
+        private System.Windows.Forms.Button button1;
     }
 }

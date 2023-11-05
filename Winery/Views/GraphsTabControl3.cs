@@ -93,7 +93,7 @@ namespace Winery.Views
         }
 
 
-        bool IsLeafNode(TreeNode node)
+        private bool IsLeafNode(TreeNode node)
         {
             return node.Nodes.Count == 0;
         }
@@ -208,6 +208,23 @@ namespace Winery.Views
                 wineList2.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
+        private void exportToExcel2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainForm.StartLoadingDialog();
+                ExportToExcelHelper.ExportPlotModelToExcel32(this.plotView2.Model, $@"{Application.StartupPath}\Export32.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlLine);
+            } 
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                MainForm.CloseLoadingDialog();
+            }
+        }
+
         #endregion
         #region tab3
 

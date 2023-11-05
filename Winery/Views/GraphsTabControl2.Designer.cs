@@ -56,6 +56,7 @@
             this.dataSet2 = new Winery.DataSet2();
             this.wINESTableAdapter = new Winery.DataSet2TableAdapters.WINESTableAdapter();
             this.oracleCommand1 = new Oracle.ManagedDataAccess.Client.OracleCommand();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -108,6 +109,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.clientAgeTo1);
             this.splitContainer1.Panel1.Controls.Add(this.clientAgeFrom1);
             this.splitContainer1.Panel1.Controls.Add(this.label10);
@@ -373,6 +375,16 @@
             // 
             this.oracleCommand1.Transaction = null;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(9, 199);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(254, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Export to excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.exportToExcelButton1_Click);
+            // 
             // GraphsTabControl2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,5 +448,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel22;
+        private System.Windows.Forms.Button button1;
     }
 }

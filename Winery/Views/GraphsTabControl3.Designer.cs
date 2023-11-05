@@ -56,6 +56,7 @@
             this.wINESBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet2 = new Winery.DataSet2();
             this.wINESTableAdapter = new Winery.DataSet2TableAdapters.WINESTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -167,6 +168,7 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.button1);
             this.splitContainer2.Panel1.Controls.Add(this.button2);
             this.splitContainer2.Panel1.Controls.Add(this.button3);
             this.splitContainer2.Panel1.Controls.Add(this.wineList2);
@@ -382,6 +384,16 @@
             // 
             this.wINESTableAdapter.ClearBeforeFill = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 96);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(257, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Export to Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.exportToExcel2_Click);
+            // 
             // GraphsTabControl3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,5 +455,6 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label computeResultLabel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button button1;
     }
 }

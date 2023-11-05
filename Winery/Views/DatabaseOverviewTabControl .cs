@@ -164,5 +164,26 @@ namespace Winery.Views
         }
 
         #endregion
+
+
+        #region Exports
+        private void exportToExcelButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainForm.StartLoadingDialog();
+                ExportToExcelHelper.ExportGridviewToExcel(winesGridView, $@"{Application.StartupPath}\ExportWines.xlsx");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                MainForm.CloseLoadingDialog();
+            }
+        }
+
+        #endregion
     }
 }

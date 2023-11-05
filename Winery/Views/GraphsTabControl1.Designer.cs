@@ -32,6 +32,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button5 = new System.Windows.Forms.Button();
             this.SelectAllButton1 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@
             this.plotView1 = new OxyPlot.WindowsForms.PlotView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.exportToExcelButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -69,6 +71,7 @@
             this.wINESBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet2 = new Winery.DataSet2();
             this.wINESTableAdapter = new Winery.DataSet2TableAdapters.WINESTableAdapter();
+            this.button6 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -121,6 +124,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.button5);
             this.splitContainer1.Panel1.Controls.Add(this.SelectAllButton1);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
@@ -139,9 +143,19 @@
             this.splitContainer1.SplitterDistance = 276;
             this.splitContainer1.TabIndex = 0;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(6, 147);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(257, 23);
+            this.button5.TabIndex = 10;
+            this.button5.Text = "Export to excel";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.exportToExcelButton1_Click);
+            // 
             // SelectAllButton1
             // 
-            this.SelectAllButton1.Location = new System.Drawing.Point(104, 166);
+            this.SelectAllButton1.Location = new System.Drawing.Point(104, 176);
             this.SelectAllButton1.Name = "SelectAllButton1";
             this.SelectAllButton1.Size = new System.Drawing.Size(83, 23);
             this.SelectAllButton1.TabIndex = 9;
@@ -151,7 +165,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 166);
+            this.button1.Location = new System.Drawing.Point(6, 176);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(92, 23);
             this.button1.TabIndex = 8;
@@ -199,9 +213,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.wineryList1.CheckOnClick = true;
             this.wineryList1.FormattingEnabled = true;
-            this.wineryList1.Location = new System.Drawing.Point(6, 195);
+            this.wineryList1.Location = new System.Drawing.Point(6, 205);
             this.wineryList1.Name = "wineryList1";
-            this.wineryList1.Size = new System.Drawing.Size(257, 604);
+            this.wineryList1.Size = new System.Drawing.Size(257, 574);
             this.wineryList1.Sorted = true;
             this.wineryList1.TabIndex = 3;
             // 
@@ -257,6 +271,7 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.exportToExcelButton);
             this.splitContainer2.Panel1.Controls.Add(this.button2);
             this.splitContainer2.Panel1.Controls.Add(this.button3);
             this.splitContainer2.Panel1.Controls.Add(this.label4);
@@ -275,9 +290,19 @@
             this.splitContainer2.SplitterDistance = 276;
             this.splitContainer2.TabIndex = 1;
             // 
+            // exportToExcelButton
+            // 
+            this.exportToExcelButton.Location = new System.Drawing.Point(6, 147);
+            this.exportToExcelButton.Name = "exportToExcelButton";
+            this.exportToExcelButton.Size = new System.Drawing.Size(257, 23);
+            this.exportToExcelButton.TabIndex = 2;
+            this.exportToExcelButton.Text = "Export to Excel";
+            this.exportToExcelButton.UseVisualStyleBackColor = true;
+            this.exportToExcelButton.Click += new System.EventHandler(this.exportToExcelButton2_Click);
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(104, 166);
+            this.button2.Location = new System.Drawing.Point(104, 176);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(83, 23);
             this.button2.TabIndex = 9;
@@ -287,7 +312,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(6, 166);
+            this.button3.Location = new System.Drawing.Point(6, 176);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(92, 23);
             this.button3.TabIndex = 8;
@@ -335,9 +360,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.wineryList2.CheckOnClick = true;
             this.wineryList2.FormattingEnabled = true;
-            this.wineryList2.Location = new System.Drawing.Point(6, 195);
+            this.wineryList2.Location = new System.Drawing.Point(6, 205);
             this.wineryList2.Name = "wineryList2";
-            this.wineryList2.Size = new System.Drawing.Size(257, 604);
+            this.wineryList2.Size = new System.Drawing.Size(257, 574);
             this.wineryList2.Sorted = true;
             this.wineryList2.TabIndex = 3;
             // 
@@ -392,6 +417,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.button6);
             this.splitContainer3.Panel1.Controls.Add(this.selectAllButton3);
             this.splitContainer3.Panel1.Controls.Add(this.clearSelectionButton3);
             this.splitContainer3.Panel1.Controls.Add(this.label7);
@@ -412,7 +438,7 @@
             // 
             // selectAllButton3
             // 
-            this.selectAllButton3.Location = new System.Drawing.Point(104, 166);
+            this.selectAllButton3.Location = new System.Drawing.Point(104, 176);
             this.selectAllButton3.Name = "selectAllButton3";
             this.selectAllButton3.Size = new System.Drawing.Size(83, 23);
             this.selectAllButton3.TabIndex = 9;
@@ -422,7 +448,7 @@
             // 
             // clearSelectionButton3
             // 
-            this.clearSelectionButton3.Location = new System.Drawing.Point(6, 166);
+            this.clearSelectionButton3.Location = new System.Drawing.Point(6, 176);
             this.clearSelectionButton3.Name = "clearSelectionButton3";
             this.clearSelectionButton3.Size = new System.Drawing.Size(92, 23);
             this.clearSelectionButton3.TabIndex = 8;
@@ -470,9 +496,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.wineryList3.CheckOnClick = true;
             this.wineryList3.FormattingEnabled = true;
-            this.wineryList3.Location = new System.Drawing.Point(6, 195);
+            this.wineryList3.Location = new System.Drawing.Point(6, 205);
             this.wineryList3.Name = "wineryList3";
-            this.wineryList3.Size = new System.Drawing.Size(257, 604);
+            this.wineryList3.Size = new System.Drawing.Size(257, 574);
             this.wineryList3.Sorted = true;
             this.wineryList3.TabIndex = 3;
             // 
@@ -520,6 +546,16 @@
             // wINESTableAdapter
             // 
             this.wINESTableAdapter.ClearBeforeFill = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(6, 147);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(257, 23);
+            this.button6.TabIndex = 10;
+            this.button6.Text = "Export to excel";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.exportToExcelButton3_Click);
             // 
             // GraphsTabControl1
             // 
@@ -595,5 +631,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button createGraph3;
         private OxyPlot.WindowsForms.PlotView plotView3;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button exportToExcelButton;
+        private System.Windows.Forms.Button button6;
     }
 }

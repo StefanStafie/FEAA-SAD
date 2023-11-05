@@ -126,6 +126,23 @@ namespace Winery.Views
             MainForm.CloseLoadingDialog();
         }
 
+        private void exportToExcelButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainForm.StartLoadingDialog();
+                ExportToExcelHelper.ExportPlotModelToExcel21(plotView1.Model, $@"{Application.StartupPath}\Export21.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlLine);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                MainForm.CloseLoadingDialog();
+            }
+        }
+
         #endregion
 
         #region Tab2
@@ -161,14 +178,27 @@ namespace Winery.Views
 
             MainForm.CloseLoadingDialog();
 
-            if(similarWines.Count == 0  && peopleAlsoBought.Count == 0)
+            if (similarWines.Count == 0 && peopleAlsoBought.Count == 0)
             {
-                MessageBox.Show("There were no similar wines and there were no people who also bought this. Nothing to recommend.");
+                try
+                {
+                    MainForm.StartLoadingDialog();
+                    MessageBox.Show("There were no similar wines and there were no people who also bought this. Nothing to recommend.");
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
+                finally
+                {
+                    MainForm.CloseLoadingDialog();
+                }
             }
 
         }
 
         #endregion
-       
+
+
     }
 }

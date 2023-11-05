@@ -137,6 +137,23 @@ namespace Winery.Views
             }
         }
 
+        private void exportToExcelButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainForm.StartLoadingDialog();
+                ExportToExcelHelper.ExportPlotModelToExcel11(plotView1.Model, $@"{Application.StartupPath}\Export11.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlLine);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                MainForm.CloseLoadingDialog();
+            }
+        }
+
         #endregion
         #region Tab2
 
@@ -232,8 +249,25 @@ namespace Winery.Views
                 wineryList2.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
-        #endregion
 
+        private void exportToExcelButton2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainForm.StartLoadingDialog();
+                ExportToExcelHelper.ExportPlotModelToExcel12(plotView2.Model, $@"{Application.StartupPath}\Export12.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlBarStacked);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                MainForm.CloseLoadingDialog();
+            }
+        }
+
+        #endregion
         #region Tab3
 
         private void createGraph3_Click(object sender, EventArgs e)
@@ -294,6 +328,25 @@ namespace Winery.Views
             }
         }
 
+        private void exportToExcelButton3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainForm.StartLoadingDialog();
+                ExportToExcelHelper.ExportPlotModelToExcel13(plotView3.Model, $@"{Application.StartupPath}\Export13.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlPie);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                MainForm.CloseLoadingDialog();
+            }
+        }
+
         #endregion
+
+
     }
 }
