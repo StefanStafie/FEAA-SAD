@@ -52,7 +52,7 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(92, 64);
+            this.trackBar1.Location = new System.Drawing.Point(153, 54);
             this.trackBar1.Maximum = 50;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(104, 45);
@@ -62,7 +62,7 @@
             // 
             // trackBar2
             // 
-            this.trackBar2.Location = new System.Drawing.Point(281, 64);
+            this.trackBar2.Location = new System.Drawing.Point(297, 54);
             this.trackBar2.Maximum = 100;
             this.trackBar2.Minimum = 25;
             this.trackBar2.Name = "trackBar2";
@@ -84,7 +84,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Winery.Properties.Resources.Screenshot__343____Copy;
-            this.pictureBox3.Location = new System.Drawing.Point(407, 64);
+            this.pictureBox3.Location = new System.Drawing.Point(112, 54);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(28, 31);
             this.pictureBox3.TabIndex = 5;
@@ -93,7 +93,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Winery.Properties.Resources.Screenshot__342_;
-            this.pictureBox2.Location = new System.Drawing.Point(225, 64);
+            this.pictureBox2.Location = new System.Drawing.Point(263, 54);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(28, 31);
             this.pictureBox2.TabIndex = 4;
@@ -102,7 +102,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Winery.Properties.Resources.Screenshot__342____Copy;
-            this.pictureBox1.Location = new System.Drawing.Point(37, 64);
+            this.pictureBox1.Location = new System.Drawing.Point(407, 54);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(28, 31);
             this.pictureBox1.TabIndex = 3;
@@ -111,7 +111,7 @@
             // trackBar1Label
             // 
             this.trackBar1Label.AutoSize = true;
-            this.trackBar1Label.Location = new System.Drawing.Point(99, 112);
+            this.trackBar1Label.Location = new System.Drawing.Point(168, 102);
             this.trackBar1Label.Name = "trackBar1Label";
             this.trackBar1Label.Size = new System.Drawing.Size(80, 13);
             this.trackBar1Label.TabIndex = 6;
@@ -120,7 +120,7 @@
             // trackBar2Label
             // 
             this.trackBar2Label.AutoSize = true;
-            this.trackBar2Label.Location = new System.Drawing.Point(296, 112);
+            this.trackBar2Label.Location = new System.Drawing.Point(305, 102);
             this.trackBar2Label.Name = "trackBar2Label";
             this.trackBar2Label.Size = new System.Drawing.Size(80, 13);
             this.trackBar2Label.TabIndex = 7;
