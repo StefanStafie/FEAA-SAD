@@ -172,7 +172,7 @@ namespace Winery.Views
             try
             {
                 MainForm.StartLoadingDialog();
-                ExportToExcelHelper.ExportGridviewToExcel(winesGridView, $@"{Application.StartupPath}\ExportWines.xlsx");
+                ExportToExcelHelper.ExportGridviewToExcel(winesGridView, $@"{Application.StartupPath}\Exports\ExportWines.xlsx");
             }
             catch (Exception exception)
             {

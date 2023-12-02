@@ -58,6 +58,7 @@
             this.plotView2 = new OxyPlot.WindowsForms.PlotView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.button6 = new System.Windows.Forms.Button();
             this.selectAllButton3 = new System.Windows.Forms.Button();
             this.clearSelectionButton3 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -71,7 +72,7 @@
             this.wINESBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet2 = new Winery.DataSet2();
             this.wINESTableAdapter = new Winery.DataSet2TableAdapters.WINESTableAdapter();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -124,6 +125,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.button7);
             this.splitContainer1.Panel1.Controls.Add(this.button5);
             this.splitContainer1.Panel1.Controls.Add(this.SelectAllButton1);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
@@ -147,7 +149,7 @@
             // 
             this.button5.Location = new System.Drawing.Point(6, 147);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(257, 23);
+            this.button5.Size = new System.Drawing.Size(92, 23);
             this.button5.TabIndex = 10;
             this.button5.Text = "Export to excel";
             this.button5.UseVisualStyleBackColor = true;
@@ -436,6 +438,16 @@
             this.splitContainer3.SplitterDistance = 276;
             this.splitContainer3.TabIndex = 2;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(6, 147);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(257, 23);
+            this.button6.TabIndex = 10;
+            this.button6.Text = "Export to excel";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.exportToExcelButton3_Click);
+            // 
             // selectAllButton3
             // 
             this.selectAllButton3.Location = new System.Drawing.Point(104, 176);
@@ -547,15 +559,15 @@
             // 
             this.wINESTableAdapter.ClearBeforeFill = true;
             // 
-            // button6
+            // button7
             // 
-            this.button6.Location = new System.Drawing.Point(6, 147);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(257, 23);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Export to excel";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.exportToExcelButton3_Click);
+            this.button7.Location = new System.Drawing.Point(104, 147);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(159, 23);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "Advanced Export to excel";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // GraphsTabControl1
             // 
@@ -634,5 +646,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button exportToExcelButton;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }

@@ -207,6 +207,12 @@
     <Compile Include="Helper\DatabaseCommandHelper.cs" />
     <Compile Include="Helper\RandomGenerator.cs" />
     <Compile Include="Helper\WinformsHelper.cs" />
+    <Compile Include="Views\SoldWinesExportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SoldWinesExportForm.Designer.cs">
+      <DependentUpon>SoldWinesExportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\DatabaseOverviewTabControl .cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     <Compile Include="Views\WineControl.Designer.cs">
       <DependentUpon>WineControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\SoldWinesExportForm.resx">
+      <DependentUpon>SoldWinesExportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\DatabaseOverviewTabControl .resx">
       <DependentUpon>DatabaseOverviewTabControl .cs</DependentUpon>
     </EmbeddedResource>
@@ -339,6 +348,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Deus_Wine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot %28342%29 - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot %28342%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot %28343%29 - Copy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />

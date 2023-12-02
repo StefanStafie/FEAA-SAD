@@ -83,6 +83,7 @@ namespace Winery.Helper
                 series.Values= oxySeries.Points.Select(x => x.Y).ToArray();
             }
         }
+
         #endregion
 
         #region tab13
@@ -244,7 +245,7 @@ namespace Winery.Helper
         }
         #endregion
 
-        static private void releaseObject(object obj)
+        static public void releaseObject(object obj)
         {
             try
             {

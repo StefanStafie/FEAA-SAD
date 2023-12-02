@@ -142,7 +142,7 @@ namespace Winery.Views
             try
             {
                 MainForm.StartLoadingDialog();
-                ExportToExcelHelper.ExportPlotModelToExcel11(plotView1.Model, $@"{Application.StartupPath}\Export11.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlLine);
+                ExportToExcelHelper.ExportPlotModelToExcel11(plotView1.Model, $@"{Application.StartupPath}\Exports\Export11.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlLine);
             }
             catch (Exception exception)
             {
@@ -255,7 +255,7 @@ namespace Winery.Views
             try
             {
                 MainForm.StartLoadingDialog();
-                ExportToExcelHelper.ExportPlotModelToExcel12(plotView2.Model, $@"{Application.StartupPath}\Export12.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlBarStacked);
+                ExportToExcelHelper.ExportPlotModelToExcel12(plotView2.Model, $@"{Application.StartupPath}\Exports\Export12.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlBarStacked);
             }
             catch (Exception exception)
             {
@@ -333,7 +333,7 @@ namespace Winery.Views
             try
             {
                 MainForm.StartLoadingDialog();
-                ExportToExcelHelper.ExportPlotModelToExcel13(plotView3.Model, $@"{Application.StartupPath}\Export13.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlPie);
+                ExportToExcelHelper.ExportPlotModelToExcel13(plotView3.Model, $@"{Application.StartupPath}\Exports\Export13.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlPie);
             }
             catch (Exception exception)
             {
@@ -345,8 +345,14 @@ namespace Winery.Views
             }
         }
 
+
         #endregion
 
-
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var form = new SoldWinesExportForm(this.wineryList1, this.dateTimeFrom1.Value, this.dateTimeTo1.Value);
+            form.ShowDialog();
+            form.Dispose();
+        }
     }
 }

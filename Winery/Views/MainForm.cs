@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using Winery.Helper;
@@ -15,6 +16,7 @@ namespace Winery
         public MainForm()
         {
             InitializeComponent();
+            Directory.CreateDirectory($"{Application.StartupPath}\\Exports");
         }
 
         private void exitMenuItem_Click(object sender, EventArgs e)

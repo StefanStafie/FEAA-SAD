@@ -213,7 +213,7 @@ namespace Winery.Views
             try
             {
                 MainForm.StartLoadingDialog();
-                ExportToExcelHelper.ExportPlotModelToExcel32(this.plotView2.Model, $@"{Application.StartupPath}\Export32.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlLine);
+                ExportToExcelHelper.ExportPlotModelToExcel32(this.plotView2.Model, $@"{Application.StartupPath}\Exports\Export32.xlsx", Microsoft.Office.Interop.Excel.XlChartType.xlLine);
             } 
             catch(Exception exception)
             {
